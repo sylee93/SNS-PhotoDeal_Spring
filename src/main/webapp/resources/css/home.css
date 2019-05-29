@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+nav {
+	background-color: #3e3d3d;
+	font-weight:bold;
+	overflow: hidden;
+}
+.nav {
+	vertical-align : middle;
+	float: left;
+	display : block;
+	color: white;
+	text-align: center;
+	padding: 14px 20px;
+	text-decoration: none;
+}
+
+.nav.right {
+	float: right;
+}
+footer {
+	text-align: center;
+	background-color: #3e3d3d;
+	font-weight:bold;
+	color: white;
+	overflow: hidden;
+}
+.syCompany {
+	display: inline;
+	padding: 3px;
+	text-decoration: none;
+	color: white;
+}
+.img {
+	background-color: #3e3d3d;
+	display : table-cell;
+	vertical-align: middle;
+	width: 30%;
+	height: 350px;
+		margin: 10px;
+		overflow: hidden;
+}
+.mySlides {
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
+.search.btn {
+	color: white;
+	background-color: #8492ad;
+	text-align: center;
+	width : 45px;
+	height: 27px;
+}
+.search {
+	vertical-align : middle;	
+	float: left;
+	font-size: 10pt;
+	border: none;
+	opacity: 0.8;
+}
+<<<<<<< HEAD
+.search.btn {
+	background-color: #d5d5d5;
+	text-align: center;
+	width : 40px;
+	height: 27px;
+	border-radius : 0 10px 10px 0 / 0 10px 10px 0;
+}
+=======
+>>>>>>> parent of 8975ea4... 20190525
+.search.bar{
+	height:25px;
+	color: #7381af;
+	background: #eae6e6;
+	padding-left: 10px;
+	border-radius : 10px 0 0 10px / 10px 0 0 10px;
+}
+.search:hover{
+	opacity: 1;
+<<<<<<< HEAD
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #e6e6e6;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.dropdown {
+	display: inline-block;
+}
+.headbtn{
+	border: none;
+	background-color: white;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+.headbtn.right{
+	float: right;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown:hover .dropdown-content {display: block;}
+=======
+}
+>>>>>>> parent of 8975ea4... 20190525
