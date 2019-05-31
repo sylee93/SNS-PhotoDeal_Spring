@@ -16,11 +16,18 @@
 		</div>
 		<c:if test="${session.id == null }">
 			<div class="profile">
-				<button class="menubtn" onclick="openLogin()">
+				<button class="menubtn right" onclick="openLogin()">
 					<img src="image/login.png">
-				</button><br>
+				</button>
 				<div class="profile-content">
-					<a href="#">유료 이미지</a><a href="#">무료 이미지</a><a href="#">카테고리</a>
+					<a href="#">
+						보유포인트<br>
+						50,000원
+					</a>
+					<hr class="myinfoHr">
+					<a href="#">
+						상세보기
+					</a>
 				</div>
 			</div>
 		</c:if>

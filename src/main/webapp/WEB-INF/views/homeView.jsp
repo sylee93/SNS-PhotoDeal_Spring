@@ -3,7 +3,7 @@
 <%@ include file="header.jsp"%>
 <link type="text/css" rel="stylesheet" href="css/homeView.css">
 <%@ include file="neck.jsp"%>
-<hr>
+<hr class="bodystart">
 <div class="row">
 	<div class="column">
 		<img src="image/test1.jpg">
