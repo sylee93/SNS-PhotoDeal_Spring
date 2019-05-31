@@ -1,26 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
-<style>
-.row{
-	background-color: #FFefef;
-	display: -ms-flexbox; /* IE 10 */
-	display: flex;
-	-ms-flex-wrap: wrap; /* IE 10 */
-	flex-wrap: wrap;
-	padding: 0 30px;
-}
-.column{
-	flex: 17%;
-  	padding: 12px 12px;
-}
-.column img {
-	margin-top: 24px;
- 	vertical-align: middle;
- 	width: 100%;
-}
-
-</style>
+<link type="text/css" rel="stylesheet" href="css/homeView.css">
 <%@ include file="neck.jsp"%>
 <hr>
 <div class="row">

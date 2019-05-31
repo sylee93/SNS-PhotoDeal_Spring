@@ -1,4 +1,4 @@
-package project.sylee.photosns;
+package project.spring.ps;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -34,11 +34,6 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
-	}
-	
-	@RequestMapping("/syhome")
-	public String syhome() {
-		return "syhome";
 	}
 	
 }

@@ -55,9 +55,9 @@ hr {
 }
 
 .search.btn {
-	vertical-align: bottom;
+	vertical-align : middle;
 	background-color: #d5d5d5;
-	margin-left : -6px;
+	margin-left : -4px;
 	width: 6%;
 	height: 40px;
 	border-radius: 0 10px 10px 0/0 10px 10px 0;
@@ -71,6 +71,7 @@ hr {
 	margin-bottom: 2px;
 }
 .search.bar {
+	vertical-align : middle;
 	width: 40%;
 	height: 40px;
 	color: #374160;
@@ -83,16 +84,12 @@ hr {
 	opacity: 1;
 }
 
-.menu-content {
-	display: none;
-	position: absolute;
-	background-color: #feefef;
-	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-}
-
 .menu {
 	display: inline-block;
+}
+.profile {
+	display: inline-block;
+	float: right;
 }
 
 .menubtn {
@@ -108,11 +105,30 @@ hr {
 	height: auto;
 }
 
-.menubtn.right {
-	float: right;
+.menu-content {
+	display: none;
+	position: absolute;
+	background-color: #fff7f7;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .menu-content a {
+	color: #525252;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+.profile-content {
+	/* display: none; */
+	float:right;
+	position: relative;
+	background-color: #fff7f7;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.profile-content a {
 	color: #525252;
 	padding: 12px 16px;
 	text-decoration: none;
@@ -122,6 +138,7 @@ hr {
 .menu:hover .menu-content {
 	display: block;
 }
+
 
 .sortdiv {
 	text-align: center;
