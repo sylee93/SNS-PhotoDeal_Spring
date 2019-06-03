@@ -11,10 +11,17 @@
 				<img src="image/menu.png">
 			</button>
 			<div class="menu-content">
-				<a href="#">유료 이미지</a> <a href="#">무료 이미지</a> <a href="#">카테고리</a>
+				<a href="#">유료 이미지</a> <a href="#">무료 이미지</a> <a href="categoryView.do">카테고리</a>
 			</div>
 		</div>
 		<c:if test="${session.id == null }">
+			<div class="profile">
+				<button class="menubtn right" onclick="openLogin()">
+					<img src="image/login.png">
+				</button>
+			</div>
+		</c:if>
+		<c:if test="${session.id != null }">
 			<div class="profile">
 				<button class="menubtn right" onclick="openLogin()">
 					<img src="image/login.png">
@@ -25,20 +32,13 @@
 						50,000원
 					</a>
 					<hr class="myinfoHr">
-					<a href="#">
+					<a href="myPageView.do">
 						상세보기
 					</a>
 				</div>
 			</div>
 		</c:if>
-		<c:if test="${session.id != null }">
-			<button class="menubtn right" onclick="mySideBar()">
-				<img src="image/login.png">
-			</button>
-			<div class="menu-content">
-				<a href="#">유료 이미지</a><a href="#">무료 이미지</a><a href="#">카테고리</a>
-			</div>
-		</c:if>
+
 		<div class="title">
 			<a href="homeView.do"><img src="image/title2.png"></a>
 		</div>
@@ -52,18 +52,7 @@
 			</button>
 		</div>
 	</nav>
-	<div class="sortdiv">
-		<button class="sortbtn">
-			<b>최신 순</b>
-		</button>
-		<button class="sortbtn">
-			<b>인기 순</b>
-		</button>
-		<button class="sortbtn">
-			<b>다운로드 순</b>
-		</button>
-	</div>
-	<div id="myOverlay" class="overlay">
+	<div id="myOverlay" class="overlayLogin">
 		<span class="closebtn" onclick="closeLogin()" title="Close Overlay">X</span>
 		<div class="overlay-content">
 			<form action="#">

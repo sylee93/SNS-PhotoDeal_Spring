@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProjectController {
 
 	@RequestMapping(value="homeView")
-	public String home() {
+	public String homeView() {
 		return "homeView";
 	}
 	
@@ -17,12 +17,16 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="signUpView")
-	public String signUp() {
+	public String signUpView() {
 		return "signUpView";
 	}
 	
 	@RequestMapping(value="categoryView")
-	public String category() {
+	public String categoryView() {
 		return "categoryView";
+	}
+	@RequestMapping(value="myPageView")
+	public String myPageView() {
+		return "myPageView";
 	}
 }

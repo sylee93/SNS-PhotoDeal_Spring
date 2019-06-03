@@ -3,6 +3,17 @@
 <%@ include file="header.jsp"%>
 <link type="text/css" rel="stylesheet" href="css/homeView.css">
 <%@ include file="neck.jsp"%>
+	<div class="sortdiv">
+		<button class="sortbtn">
+			<b>최신 순</b>
+		</button>
+		<button class="sortbtn">
+			<b>인기 순</b>
+		</button>
+		<button class="sortbtn">
+			<b>다운로드 순</b>
+		</button>
+	</div>
 <hr class="bodystart">
 <div class="row">
 	<div class="column">

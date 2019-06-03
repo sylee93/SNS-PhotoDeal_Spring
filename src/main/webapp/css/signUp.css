@@ -1,0 +1,53 @@
+@charset "UTF-8";
+.signUpBox {
+	width: 40%;
+	margin: 0 auto;
+	margin-top: 5%;
+}
+.signUpBox label{
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #706f6f;
+}
+.signUpBox input[name=id] {
+	width: 80%;
+}
+.signUpBox button{
+	width : 20%;
+	border:none;
+}
+.signUpBox input{
+	width: 100%;
+}
+.input {
+	height: 30px;
+	border: none;
+	background-color: #fff0f0;
+	opacity: 0.8;
+	padding-left: 5px;
+}
+.signUpBox button {
+	height: 30px;
+	background-color: #f47f7f;
+	color: white;
+	opacity: 0.8;
+}
+.regiBtn{
+	margin: 0 auto;
+	border:none;
+	background-color: #f47f7f;
+	height : 50px;
+	font-weight: bold;
+	font-size: 2rem;
+	color: white;
+	opacity: 0.8;
+}
+.input:hover  {
+	opacity: 1;
+}
+.regiBtn:hover {
+	opacity: 1;
+}
+.signUpBox button:hover {
+	opacity: 1;
+}
