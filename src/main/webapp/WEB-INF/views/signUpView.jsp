@@ -13,6 +13,8 @@
 		<input class="input" type="text" placeholder="Enter ID" name="id" required><button>중복확인</button><br><br>
 		<label>Email</label><br>
 		<input class="input" type="email" placeholder="Enter Email" name="email" required><br><br>
+		<label>닉네임</label><br>
+		<input class="input" type="text" placeholder="Enter Nicname" name="nicname" required><br><br>
 		<label>패스워드</label><br>
 		<input class="input" type="password" placeholder="Enter Password" name="psw" required><br><br>
 		<label>패스워드 확인</label><br>

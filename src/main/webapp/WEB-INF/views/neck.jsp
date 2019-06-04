@@ -35,6 +35,7 @@
 					<a href="myPageView.do">
 						상세보기
 					</a>
+					<p>로그아웃</p>
 				</div>
 			</div>
 		</c:if>

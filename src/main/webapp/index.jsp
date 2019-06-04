@@ -8,8 +8,8 @@
 </head>
 <body>
 	<%
-		//response.sendRedirect("homeView.do");
-		response.sendRedirect("myPageView.do");
+		response.sendRedirect("homeView.do");
+		//response.sendRedirect("myPageView.do");
 	%>
 </body>
 </html>

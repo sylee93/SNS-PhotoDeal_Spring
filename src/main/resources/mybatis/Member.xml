@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member">
+  <!-- Use type aliases to avoid typing the full classname every time. -->
+  <resultMap id="EmpResult" type="Member">
+    <result property="id" column="id"/>
+    <result property="pw" column="pw"/>
+    <result property="nicName" column="nicName"/>
+    <result property="point" column="point"/>
+    <result property="email" column="email"/>
+    <result property="profile" column="profile"/>
+    <result property="createDate" column="createDate"/>
+    <result property="follow" column="follow"/>
+    <result property="follower" column="follower"/>
+  </resultMap>
+
+   
+   <select id="total" resultType="int">
+  	   select count(*) from Member
+   </select> 
+</mapper>
