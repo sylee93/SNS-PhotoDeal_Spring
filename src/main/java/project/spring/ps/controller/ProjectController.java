@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import project.spring.ps.model.MemberVO;
 import project.spring.ps.service.UserService;
@@ -16,10 +17,21 @@ public class ProjectController {
 	@Autowired
 	private UserService us;
 	
-	@RequestMapping(value="homeView")
+	@RequestMapping(value="homeView", method = {RequestMethod.POST,RequestMethod.GET})
 	public String homeView(HttpServletRequest request,HttpSession session ,Model model) {
 		MemberVO member = (MemberVO) session.getAttribute("member");
+		System.out.println("member확인 2222: " + member);
 		String checkId = null;
+		String logOutFlag = request.getParameter("logOutFlag");
+		System.out.println("logOutFlag : " +logOutFlag);
+		if(logOutFlag != null) { 
+			session.invalidate();
+			System.out.println("if:"+member);
+		}
+		else {
+			logOutFlag = "0";
+			System.out.println("else:"+member);
+		}
 		if (member == null ) {
 			System.out.println("wellcome!!");
 		}
@@ -30,6 +42,7 @@ public class ProjectController {
 		String id = request.getParameter("id");
 		if(id == null) { id = "guest";}
 		String pw = request.getParameter("pw");
+		System.out.println("[controller.jsp]homeView33 : checkId =" + checkId);
 		System.out.println("[controller.jsp]homeView33 : id =" + id);
 		System.out.println("[controller.jsp]homeView34 : pw ="+ pw);
 		if(id != "guest" && checkId == null) {
@@ -51,6 +64,7 @@ public class ProjectController {
 					member.setId(checkId);
 					member.setPw(checkPw);
 					session.setAttribute("member", member);
+					System.out.println("member확인 1111: " + member);
 				} else {
 					System.out.println("비밀번호 틀림");
 					checkResult = "failPw";

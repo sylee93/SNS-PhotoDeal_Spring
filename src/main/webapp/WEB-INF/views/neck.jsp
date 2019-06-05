@@ -14,17 +14,19 @@
 				<a href="#">유료 이미지</a> <a href="#">무료 이미지</a> <a href="categoryView.do">카테고리</a>
 			</div>
 		</div>
-		<c:if test="${session.id == null }">
+		<c:if test="${sessionScope.member.id == null }">
 			<div class="profile">
 				<button class="menubtn right" onclick="openLogin()">
 					<img src="image/login.png">
 				</button>
 			</div>
 		</c:if>
-		<c:if test="${session.id != null }">
+		<c:if test="${sessionScope.member.id != null }">
 			<div class="profile">
-				<button class="menubtn right" onclick="openLogin()">
-					<img src="image/login.png">
+				<button class="menubtn right">
+					<div class="profile-box">
+						<img src="image/${sessionScope.member.profile }">
+					</div>
 				</button>
 				<div class="profile-content">
 					<a href="#">
@@ -35,7 +37,7 @@
 					<a href="myPageView.do">
 						상세보기
 					</a>
-					<p>로그아웃</p>
+					<a href="homeView.do?logOutFlag=1">로그아웃</a>
 				</div>
 			</div>
 		</c:if>

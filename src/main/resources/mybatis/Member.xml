@@ -16,6 +16,6 @@
   </resultMap>
    
    <select id="checkId" parameterType="java.lang.String" resultType="MemberVO">
-  	   select id, pw from Member where id = #{id}
+  	   select * from Member where id = #{id}
    </select>
 </mapper>
