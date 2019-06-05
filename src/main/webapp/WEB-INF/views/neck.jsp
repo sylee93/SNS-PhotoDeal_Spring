@@ -56,14 +56,16 @@
 	<div id="myOverlay" class="overlayLogin">
 		<span class="closebtn" onclick="closeLogin()" title="Close Overlay">X</span>
 		<div class="overlay-content">
-			<form action="#">
+			<form action="homeView.do">
 				<div class="logo">
 					<img src="image/title2.png">
 				</div>
-				<label>ID</label><br> <input type="text" name="id"><br>
-				<br> <label>Password</label><br> <input type="text"
-					name="password"><br> <br> <input type="submit"
-					value="로그인"> <a class="signup" href="signUpView.do">회원가입</a>
+				<label>ID</label><br> 
+				<input type="text" name="id"><br><br>
+				<label>Password</label><br> 
+				<input type="text" name="pw"><br> <br> 
+				<input type="submit" value="로그인"> 
+				<a class="signup" href="signUpView.do">회원가입</a>
 			</form>
 		</div>
 	</div>

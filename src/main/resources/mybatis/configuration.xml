@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="Member"     type="project.spring.ps.model.Member" />
+		<typeAlias alias="MemberVO" type="project.spring.ps.model.MemberVO" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/Member.xml" />

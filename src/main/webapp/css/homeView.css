@@ -1,18 +1,19 @@
 @charset "UTF-8";
-.row{
-	background-color: #FFefef;
-	display: -ms-flexbox; /* IE 10 */
-	display: flex;
-	-ms-flex-wrap: wrap; /* IE 10 */
-	flex-wrap: wrap;
-	padding: 0 30px;
-}
+
 .column{
-	flex: 17%;
-  	padding: 12px 12px;
+	margin: 30px;
+	column-width: 250px;
+	column-gap: 15px;
 }
-.column img {
-	margin-top: 24px;
- 	vertical-align: middle;
- 	width: 100%;
+.column figure {
+	display: inline-block;
+	margin: 0;
+	margin-bottom: 15px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.column figure img {
+	vertical-align: top;
+	width: 100%;
+	height: auto;
+}
 }
