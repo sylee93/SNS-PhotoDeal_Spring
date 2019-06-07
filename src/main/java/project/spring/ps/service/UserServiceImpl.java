@@ -17,4 +17,22 @@ public class UserServiceImpl implements UserService {
 		return md.checkLogin(id);
 	}
 
+	@Override
+	public int userInsert(MemberVO member) {
+		System.out.println("[UserServiceImpl.java] userInsert");
+		return md.userInsert(member);
+	}
+
+	@Override
+	public String selectId(String id) {
+		System.out.println("[UserServiceImpl.java] selectId");
+		return md.selectId(id);
+	}
+
+	@Override
+	public String selectNic(String nicName) {
+		System.out.println("[UserServiceImpl.java] selectNic");
+		return md.selectNic(nicName);
+	}
+
 }

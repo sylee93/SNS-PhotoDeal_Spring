@@ -15,7 +15,17 @@
     <result property="follower" column="follower"/>
   </resultMap>
    
-   <select id="checkId" parameterType="java.lang.String" resultType="MemberVO">
+   <select id="checkLogin" parameterType="java.lang.String" resultType="MemberVO">
   	   select * from Member where id = #{id}
+   </select>
+   <insert id="userInsert" parameterType="memberVO">
+   		insert into Member(id, pw, nicName, email) 
+   		values(#{id}, #{pw}, #{nicName}, #{email})
+   </insert>
+   <select id="selectId" parameterType="java.lang.String" resultType="java.lang.String">
+  	   select id from Member where id = #{id}
+   </select>
+   <select id="selectNic" parameterType="java.lang.String" resultType="java.lang.String">
+  	   select nicName from Member where nicName = #{nicName}
    </select>
 </mapper>

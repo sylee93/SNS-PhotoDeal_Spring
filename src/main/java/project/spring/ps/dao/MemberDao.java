@@ -6,4 +6,10 @@ public interface MemberDao {
 
 	MemberVO checkLogin(String id);
 
+	int userInsert(MemberVO member);
+
+	String selectId(String id);
+
+	String selectNic(String nicName);
+
 }

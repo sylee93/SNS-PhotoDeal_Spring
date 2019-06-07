@@ -9,8 +9,12 @@
 	font-weight: bold;
 	color: #706f6f;
 }
-.signUpBox input[name=id] {
+.signUpBox input[type=text] {
 	width: 80%;
+}
+.idCheckMsg {
+	font-size: 0.7rem;
+	color: red;
 }
 .signUpBox button{
 	width : 20%;

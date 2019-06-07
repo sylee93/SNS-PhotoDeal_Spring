@@ -20,31 +20,29 @@ public class ProjectController {
 	@RequestMapping(value="homeView", method = {RequestMethod.POST,RequestMethod.GET})
 	public String homeView(HttpServletRequest request,HttpSession session ,Model model) {
 		MemberVO member = (MemberVO) session.getAttribute("member");
-		System.out.println("member확인 2222: " + member);
+		System.out.println("[controller.jsp]homeView : session.getAttributr(member) =  " + member);
 		String checkId = null;
 		String logOutFlag = request.getParameter("logOutFlag");
 		System.out.println("logOutFlag : " +logOutFlag);
 		if(logOutFlag != null) { 
 			session.invalidate();
-			System.out.println("if:"+member);
+			System.out.println("[controller.jsp]homeView : session.invalidate? member = "+member);
 		}
 		else {
 			logOutFlag = "0";
-			System.out.println("else:"+member);
 		}
 		if (member == null ) {
-			System.out.println("wellcome!!");
+			System.out.println("^^");
 		}
 		else {
 			checkId = member.getId();
 		}
-		System.out.println();
 		String id = request.getParameter("id");
 		if(id == null) { id = "guest";}
 		String pw = request.getParameter("pw");
-		System.out.println("[controller.jsp]homeView33 : checkId =" + checkId);
-		System.out.println("[controller.jsp]homeView33 : id =" + id);
-		System.out.println("[controller.jsp]homeView34 : pw ="+ pw);
+		System.out.println("[controller.jsp]homeView : checkId =" + checkId);
+		System.out.println("[controller.jsp]homeView : getParameter(id) =" + id);
+		System.out.println("[controller.jsp]homeView : getParameter(pw) ="+ pw);
 		if(id != "guest" && checkId == null) {
 			member = us.checkLogin(id);
 			if(member == null) {
@@ -53,18 +51,15 @@ public class ProjectController {
 				checkId = member.getId();
 			}
 			String checkResult = "success";
-			System.out.println("[controller.jsp]homeView39 : CheckId = " + checkId);
-			System.out.println("[controller.jsp]homeView40 : id = " + id);
 			if(id.equals(checkId)) {
 				String checkPw = member.getPw();
-				System.out.println("[controller.jsp]homeView43 : pw ="+ pw);
-				System.out.println("[controller.jsp]homeView44 : checkPw ="+ member.getPw());
+				System.out.println("[controller.jsp]homeView : checkPw ="+ member.getPw());
 				if(checkPw.equals(pw)) {
 					System.out.println("로그인 성공");
 					member.setId(checkId);
 					member.setPw(checkPw);
 					session.setAttribute("member", member);
-					System.out.println("member확인 1111: " + member);
+					System.out.println("[controller.jsp]homeView : session.setAttributr(member) = " + member);
 				} else {
 					System.out.println("비밀번호 틀림");
 					checkResult = "failPw";
@@ -80,10 +75,24 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="signUpView")
-	public String signUpView() {
+	public String signUpView() {		
 		return "signUpView";
 	}
-	
+	@RequestMapping(value="signUpProView")
+	public String signUpProView(HttpServletRequest request, Model model) {
+		MemberVO member = new MemberVO();
+		member.setId(request.getParameter("id"));
+		member.setEmail(request.getParameter("email"));
+		member.setNicName(request.getParameter("nicName"));
+		member.setPw(request.getParameter("pw"));
+		if(member != null) {
+			int resultInsert = us.userInsert(member);
+			System.out.println("resultInsert : " + resultInsert);
+			System.out.println("[controller.jsp] signUpProView : resultInsert = " + resultInsert);
+			model.addAttribute("resultInsert", resultInsert);
+		}
+		return "signUpProView";
+	}
 	@RequestMapping(value="categoryView")
 	public String categoryView() {
 		return "categoryView";
