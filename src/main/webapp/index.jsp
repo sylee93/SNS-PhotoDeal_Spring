@@ -9,7 +9,6 @@
 <body>
 	<%
 		response.sendRedirect("homeView.do");
-		//response.sendRedirect("myPageView.do");
 	%>
 </body>
 </html>

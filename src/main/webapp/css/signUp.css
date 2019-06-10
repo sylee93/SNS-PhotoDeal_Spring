@@ -4,17 +4,32 @@
 	margin: 0 auto;
 	margin-top: 5%;
 }
+.sugnUpProfile {
+	width : 150px;
+	height : 150px;
+	border-radius: 50%;
+	margin: 0 auto;
+}
+.sugnUpProfile img {
+	width: 100%;
+	height: auto;
+}
+
 .signUpBox label{
 	font-size: 1.2rem;
 	font-weight: bold;
 	color: #706f6f;
 }
-.signUpBox input[type=text] {
-	width: 80%;
-}
-.idCheckMsg {
+.checkMsg {
 	font-size: 0.7rem;
 	color: red;
+}
+.checkGreenMsg{
+	font-size: 0.7rem;
+	color: green;
+}
+.id{
+	ime-mode:disable;
 }
 .signUpBox button{
 	width : 20%;
@@ -29,6 +44,9 @@
 	background-color: #fff0f0;
 	opacity: 0.8;
 	padding-left: 5px;
+}
+.input[type=email] {
+	width: 80%;
 }
 .signUpBox button {
 	height: 30px;

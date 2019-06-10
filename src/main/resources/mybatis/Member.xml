@@ -2,18 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberVO">
-  <!-- Use type aliases to avoid typing the full classname every time. -->
-  <resultMap id="MemberResult" type="MemberVO">
-    <result property="id" column="id"/>
-    <result property="pw" column="pw"/>
-    <result property="nicName" column="nicName"/>
-    <result property="point" column="point"/>
-    <result property="email" column="email"/>
-    <result property="profile" column="profile"/>
-    <result property="createDate" column="createDate"/>
-    <result property="follow" column="follow"/>
-    <result property="follower" column="follower"/>
-  </resultMap>
    
    <select id="checkLogin" parameterType="java.lang.String" resultType="MemberVO">
   	   select * from Member where id = #{id}
@@ -27,5 +15,8 @@
    </select>
    <select id="selectNic" parameterType="java.lang.String" resultType="java.lang.String">
   	   select nicName from Member where nicName = #{nicName}
+   </select>
+   <select id="selectEmail" parameterType="java.lang.String" resultType="java.lang.String">
+  	   select email from Member where email = #{email}
    </select>
 </mapper>

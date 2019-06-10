@@ -12,4 +12,6 @@ public interface UserService {
 
 	String selectNic(String nicName);
 
+	String selectEmail(String email);
+
 }

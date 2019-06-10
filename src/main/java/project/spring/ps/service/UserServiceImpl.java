@@ -35,4 +35,10 @@ public class UserServiceImpl implements UserService {
 		return md.selectNic(nicName);
 	}
 
+	@Override
+	public String selectEmail(String email) {
+		System.out.println("[UserServiceImpl.java] selectEmail");
+		return md.selectEmail(email);
+	}
+
 }

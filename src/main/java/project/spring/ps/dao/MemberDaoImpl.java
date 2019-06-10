@@ -38,4 +38,10 @@ public class MemberDaoImpl implements MemberDao {
 		System.out.println("[MemberDaoImpl.java] selectNic : nicName = " + nicName);
 		return session.selectOne("selectNic", nicName);
 	}
+
+	@Override
+	public String selectEmail(String email) {
+		System.out.println("[MemberDaoImpl.java] selectEmail : email = " + email);
+		return session.selectOne("selectEmail", email);
+	}
 }

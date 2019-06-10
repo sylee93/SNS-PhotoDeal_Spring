@@ -81,18 +81,38 @@ public class ProjectController {
 	@RequestMapping(value="signUpProView")
 	public String signUpProView(HttpServletRequest request, Model model) {
 		MemberVO member = new MemberVO();
-		member.setId(request.getParameter("id"));
+		String id = request.getParameter("id");
+		String nicName = request.getParameter("nicName");
+		
+		
+		member.setId(id);
+		member.setNicName(nicName);
 		member.setEmail(request.getParameter("email"));
-		member.setNicName(request.getParameter("nicName"));
 		member.setPw(request.getParameter("pw"));
-		if(member != null) {
-			int resultInsert = us.userInsert(member);
-			System.out.println("resultInsert : " + resultInsert);
-			System.out.println("[controller.jsp] signUpProView : resultInsert = " + resultInsert);
+		
+		int resultInsert = 0;
+		String loginCheck = null;
+		
+		String resultId = us.selectId(id);
+		String resultNic = us.selectId(nicName);
+		
+		if(id.equals(resultId)) {
+			loginCheck = "sameId";
+		} else if (nicName.equals(resultNic)) {
+			loginCheck = "sameNic";
+		} else {
+			if(member != null) {
+				resultInsert = us.userInsert(member);
+				System.out.println("resultInsert : " + resultInsert);
+				System.out.println("[controller.jsp] signUpProView : resultInsert = " + resultInsert);
+			}
 			model.addAttribute("resultInsert", resultInsert);
+			return "signUpProView";
 		}
-		return "signUpProView";
+		model.addAttribute("loginCheck",loginCheck);
+		return "forward:signUpView";
 	}
+	
 	@RequestMapping(value="categoryView")
 	public String categoryView() {
 		return "categoryView";
