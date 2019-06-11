@@ -99,14 +99,14 @@ nav {
 	float: right;
 }
 .profile-box{
-	border-radius:50%;
-	width:37px;
+	border-radius:100%;
+	width:40px;
+	height:40px;
 	overflow: hidden;
 }
 .profile-box img{
 	width: 90%;
 	height: auto;
-	border-radius: 50%;
 }
 .profile-content a {
 	text-decoration: none;
@@ -134,7 +134,7 @@ nav {
 .menubtn img{
 	max-width: 100%;
 	width:auto;
-	height: auto;
+	height: 40px;
 }
 
 .menu-content {

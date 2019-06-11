@@ -72,5 +72,10 @@ public class UserRestController {
 		}
 		return mailCheckMsg;
 	}
+	@RequestMapping(value="userModify", produces = "application/text;charset=UTF-8")
+	public String userModify(HttpServletRequest request) {
+		
+		return null;
+	}
 
 }

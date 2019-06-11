@@ -25,7 +25,7 @@
 			<div class="profile">
 				<button class="menubtn right">
 					<div class="profile-box">
-						<img src="image/${sessionScope.member.profile }">
+						<img src="upload/${sessionScope.member.profile }">
 					</div>
 				</button>
 				<div class="profile-content">

@@ -21,6 +21,7 @@ public class MemberDaoImpl implements MemberDao {
 	public int userInsert(MemberVO member) {
 		System.out.println("[MemberDaoImpl.java] userInsert : member = " + member);
 		System.out.println("[MemberDaoImpl.java] userInsert : memberId = " + member.getId());
+		System.out.println("[MemberDaoImpl.java] userInsert : memberEmail = " + member.getEmail());
 		System.out.println("[MemberDaoImpl.java] userInsert : memberPw = " + member.getPw());
 		System.out.println("[MemberDaoImpl.java] userInsert : memberEmail = " + member.getEmail());
 		System.out.println("[MemberDaoImpl.java] userInsert : memberNicName = " + member.getNicName());
@@ -29,19 +30,16 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public String selectId(String id) {
-		System.out.println("[MemberDaoImpl.java] selectId : id = " + id);
 		return session.selectOne("selectId", id);
 	}
 
 	@Override
 	public String selectNic(String nicName) {
-		System.out.println("[MemberDaoImpl.java] selectNic : nicName = " + nicName);
 		return session.selectOne("selectNic", nicName);
 	}
 
 	@Override
 	public String selectEmail(String email) {
-		System.out.println("[MemberDaoImpl.java] selectEmail : email = " + email);
 		return session.selectOne("selectEmail", email);
 	}
 }
