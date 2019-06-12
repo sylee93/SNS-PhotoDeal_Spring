@@ -130,7 +130,7 @@ function nicCheck(){
 	$.ajax({
 		url:"<%=context%>/user/nicCheck.do",
 		type:"POST",
-		data : {nicName : $('#nicName').val()},
+		data : {nicName : $('#nicName').val(), id : $('#id').val()},
 		dataType:'text',
 		success: function(nicCheckMsg){
 			if (nicCheckMsg == "사용 가능한 닉네임 입니다."){

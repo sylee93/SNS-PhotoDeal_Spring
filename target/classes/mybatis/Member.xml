@@ -2,21 +2,36 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberVO">
-   
-   <select id="checkLogin" parameterType="java.lang.String" resultType="MemberVO">
-  	   select * from Member where id = #{id}
-   </select>
-   <insert id="userInsert" parameterType="memberVO">
-   		insert into Member(id, pw, profile, nicName, email) 
-   		values(#{id}, #{pw}, #{profile}, #{nicName}, #{email})
-   </insert>
-   <select id="selectId" parameterType="java.lang.String" resultType="java.lang.String">
-  	   select id from Member where id = #{id}
-   </select>
-   <select id="selectNic" parameterType="java.lang.String" resultType="java.lang.String">
-  	   select nicName from Member where nicName = #{nicName}
-   </select>
-   <select id="selectEmail" parameterType="java.lang.String" resultType="java.lang.String">
-  	   select email from Member where email = #{email}
-   </select>
+
+	<select id="checkLogin" parameterType="java.lang.String"
+		resultType="MemberVO">
+		select * from Member where id = #{id}
+	</select>
+	<insert id="userInsert" parameterType="memberVO">
+		insert into Member(id, pw, profile, nicName, email)
+		values(#{id}, #{pw}, #{profile}, #{nicName}, #{email})
+	</insert>
+	<select id="selectId" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select id from Member where id = #{id}
+	</select>
+	<select id="selectMyNic" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select nicName from Member where id = #{id}
+	</select>
+	<select id="selectNic" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select nicName from Member where nicName = #{nicName}
+	</select>
+	<select id="selectEmail" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select email from Member where email = #{email}
+	</select>
+	<select id="selectPw" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select pw from Member where id = #{id}
+	</select>
+	<update id="updateUser" parameterType="memberVO">
+		update Member set nicName = #{nicName}, pw = #{pw} where id = #{id}
+	</update>
 </mapper>

@@ -42,4 +42,19 @@ public class MemberDaoImpl implements MemberDao {
 	public String selectEmail(String email) {
 		return session.selectOne("selectEmail", email);
 	}
+
+	@Override
+	public String selectPw(String id) {
+		return session.selectOne("selectPw", id);
+	}
+
+	@Override
+	public int updateUser(MemberVO member) {
+		return session.update("updateUser", member);
+	}
+
+	@Override
+	public String selectMyNic(String id) {
+		return session.selectOne("selectMyNic", id);
+	}
 }

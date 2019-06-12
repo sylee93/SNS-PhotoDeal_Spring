@@ -14,4 +14,10 @@ public interface MemberDao {
 
 	String selectEmail(String email);
 
+	String selectPw(String id);
+
+	int updateUser(MemberVO member);
+
+	String selectMyNic(String id);
+
 }

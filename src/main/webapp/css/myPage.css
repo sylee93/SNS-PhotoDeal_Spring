@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .sidenav {
-	height: 400px;;
+	height: 440px;;
 	width: 180px;
 	position: absolute;
 	z-index : 1;
@@ -9,7 +9,7 @@
 	background-color: #FFB4B4;
 	overflow-x: hidden;
 	padding-top: 20px;
-	margin-top: 213px;
+	margin-top: 232px;
 }
 
 .sidenav a {
@@ -26,7 +26,9 @@
 	color: #313131;
 	cursor: pointer;
 }
-
+.input.readOnly{
+	background-color: #decbcb;
+}
 .main {
 	margin-left: 180px; /* Same as the width of the sidenav */
 	font-size: 28px; /* Increased text to enable scrolling */

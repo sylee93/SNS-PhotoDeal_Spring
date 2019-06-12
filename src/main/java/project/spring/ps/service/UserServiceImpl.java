@@ -41,4 +41,22 @@ public class UserServiceImpl implements UserService {
 		return md.selectEmail(email);
 	}
 
+	@Override
+	public String selectPw(String id) {
+		System.out.println("[UserServiceImpl.java] selectPw");
+		return md.selectPw(id);
+	}
+
+	@Override
+	public int updateUser(MemberVO member) {
+		System.out.println("[UserServiceImpl.java] updateUser");
+		return md.updateUser(member);
+	}
+
+	@Override
+	public String selectMyNic(String id) {
+		System.out.println("[UserServiceImpl.java] selectMyNic");
+		return md.selectMyNic(id);
+	}
+
 }

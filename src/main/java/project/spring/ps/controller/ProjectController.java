@@ -65,8 +65,8 @@ public class ProjectController {
 				System.out.println("[controller.jsp]homeView : checkPw =" + member.getPw());
 				if (checkPw.equals(pw)) {
 					System.out.println("로그인 성공");
-					member.setId(checkId);
-					member.setPw(checkPw);
+/*					member.setId(checkId);
+					member.setPw(checkPw);*/
 					session.setAttribute("member", member);
 					System.out.println("[controller.jsp]homeView : session.setAttributr(member) = " + member);
 				} else {
@@ -168,8 +168,54 @@ public class ProjectController {
 		return "categoryView";
 	}
 
+	@RequestMapping(value = "userModifyView")
+	public String userModifyView() {
+		return "userModifyView";
+	}
 	@RequestMapping(value = "myPageView")
-	public String myPageView() {
+	public String myPageView(HttpServletRequest request, Model model, MultipartFile profilePath, String path) {
+		String myPageStatus = request.getParameter("myPageStatus");
+		System.out.println("myPageStatus: " +myPageStatus);
+		MemberVO member = new MemberVO();
+		if(myPageStatus != null) {
+			if(myPageStatus.equals("userModi")) {
+				String id = request.getParameter("id");
+				String pw = request.getParameter("pw");
+				String beforePw = request.getParameter("beforePw");
+				String checkPw = us.selectPw(id);
+				String resultPw = "success";
+				System.out.println("checkPw : "+checkPw);
+				System.out.println("??????");
+				int modResult = 0;
+				
+				if(checkPw.equals(beforePw)) {
+					member.setNicName(request.getParameter("nicName"));
+					member.setId(id);
+					member.setPw(pw);
+					int result = us.updateUser(member);
+					if(result != 0) {
+						modResult = 1;
+					}
+					System.out.println("!!!! " + modResult);
+					
+				} else {
+					resultPw = "failPwCheck";
+					model.addAttribute("resultPw",resultPw);
+					return "forward:userModifyView";
+				}
+				model.addAttribute("modResult",modResult);
+			} else if(myPageStatus.equals("profileModi")) {
+				String profile = request.getParameter("profilePath");
+
+				String uploadPath = request.getSession().getServletContext().getRealPath("/upload/");
+				
+			}
+		}
+		/*model.addAttribute("myPageStatus",myPageStatus);*/
 		return "myPageView";
+	}
+	@RequestMapping(value = "profileModifyView")
+	public String profileModifyView() {
+		return "profileModifyView";
 	}
 }

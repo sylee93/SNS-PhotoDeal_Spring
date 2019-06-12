@@ -37,11 +37,17 @@ public class UserRestController {
 	@RequestMapping(value = "nicCheck" , produces = "application/text;charset=UTF-8")
 	public String nicCheck(HttpServletRequest request) {
 		String nicCheckMsg = null;
+		String id = request.getParameter("id");
 		String nicName = request.getParameter("nicName");
 		String result = us.selectNic(nicName);
+		String myNic = us.selectMyNic(id);
 		if(nicName.equals(result)) {
 			System.out.println("[UserRestController.java] nicNameDuplicateCheck : result = " + result);
-			nicCheckMsg = "이미 등록된 닉네임 입니다.";	
+			nicCheckMsg = "이미 등록된 닉네임 입니다.";
+			if(nicName.equals(myNic)) {
+				nicCheckMsg = "사용 가능한 닉네임 입니다.";
+				System.out.println("[UserRestController.java] nicNameDuplicateCheck : myNic = " + myNic);
+			}
 		} else {
 			nicCheckMsg = "사용 가능한 닉네임 입니다.";
 		}
@@ -71,11 +77,6 @@ public class UserRestController {
 			mailCheckMsg = "이메일 형식이 올바르지 않습니다.";
 		}
 		return mailCheckMsg;
-	}
-	@RequestMapping(value="userModify", produces = "application/text;charset=UTF-8")
-	public String userModify(HttpServletRequest request) {
-		
-		return null;
 	}
 
 }
