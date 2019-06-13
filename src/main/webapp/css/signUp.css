@@ -33,7 +33,7 @@
 .id{
 	ime-mode:disable;
 }
-.signUpBox button{
+.dupleCheck{
 	width : 20%;
 	border:none;
 }
@@ -50,7 +50,7 @@
 .input[type=email] {
 	width: 80%;
 }
-.signUpBox button {
+.dupleCheck {
 	height: 30px;
 	background-color: #f47f7f;
 	color: white;
@@ -72,6 +72,19 @@
 .regiBtn:hover {
 	opacity: 1;
 }
-.signUpBox button:hover {
+.dupleCheck:hover {
+	opacity: 1;
+}
+#baseImgBtn {
+	border:none;
+	background-color: #f47f7f;
+	color: white;
+	opacity: 0.8;
+	float: right;
+	width: 30%;
+	height: 30px;
+	font-size: 0.8rem;
+}
+#baseImgBtn:hover {
 	opacity: 1;
 }

@@ -20,4 +20,6 @@ public interface MemberDao {
 
 	String selectMyNic(String id);
 
+	int updateProfile(MemberVO member);
+
 }

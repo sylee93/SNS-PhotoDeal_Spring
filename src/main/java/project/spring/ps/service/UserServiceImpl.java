@@ -59,4 +59,10 @@ public class UserServiceImpl implements UserService {
 		return md.selectMyNic(id);
 	}
 
+	@Override
+	public int updateProfile(MemberVO member) {
+		System.out.println("[UserServiceImpl.java] updateProfile");
+		return md.updateProfile(member);
+	}
+
 }

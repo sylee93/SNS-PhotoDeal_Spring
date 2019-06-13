@@ -20,4 +20,6 @@ public interface UserService {
 
 	String selectMyNic(String id);
 
+	int updateProfile(MemberVO member);
+
 }

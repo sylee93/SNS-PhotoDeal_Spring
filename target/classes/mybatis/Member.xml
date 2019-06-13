@@ -34,4 +34,7 @@
 	<update id="updateUser" parameterType="memberVO">
 		update Member set nicName = #{nicName}, pw = #{pw} where id = #{id}
 	</update>
+	<update id="updateProfile" parameterType="memberVO">
+		update Member set profile = #{profile} where id = #{id}
+	</update>
 </mapper>

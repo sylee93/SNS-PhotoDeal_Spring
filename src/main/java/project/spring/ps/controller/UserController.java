@@ -21,21 +21,21 @@ import project.spring.ps.model.MemberVO;
 import project.spring.ps.service.UserService;
 
 @Controller
-public class ProjectController {
-	private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
+public class UserController {
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Autowired
 	private UserService us;
 
 	@RequestMapping(value = "homeView", method = { RequestMethod.POST, RequestMethod.GET })
 	public String homeView(HttpServletRequest request, HttpSession session, Model model) {
 		MemberVO member = (MemberVO) session.getAttribute("member");
-		System.out.println("[controller.jsp]homeView : session.getAttributr(member) =  " + member);
+		System.out.println("[UserController.java] homeView : session.getAttributr(member) =  " + member);
 		String checkId = null;
 		String logOutFlag = request.getParameter("logOutFlag");
-		System.out.println("logOutFlag : " + logOutFlag);
+		System.out.println("[UserController.java] homeView : logOutFlag = " + logOutFlag);
 		if (logOutFlag != null) {
 			session.invalidate();
-			System.out.println("[controller.jsp]homeView : session.invalidate? member = " + member);
+			System.out.println("[UserController.java] homeView : session.invalidate? member = " + member);
 		} else {
 			logOutFlag = "0";
 		}
@@ -49,26 +49,26 @@ public class ProjectController {
 			id = "guest";
 		}
 		String pw = request.getParameter("pw");
-		System.out.println("[controller.jsp]homeView : checkId =" + checkId);
-		System.out.println("[controller.jsp]homeView : getParameter(id) =" + id);
-		System.out.println("[controller.jsp]homeView : getParameter(pw) =" + pw);
+		System.out.println("[UserController.java] homeView : checkId =" + checkId);
+		System.out.println("[UserController.java] homeView : getParameter(id) =" + id);
+		System.out.println("[UserController.java] homeView : getParameter(pw) =" + pw);
 		if (id != "guest" && checkId == null) {
 			member = us.checkLogin(id);
 			if (member == null) {
-				System.out.println("homeView member null");
+				System.out.println("[UserController.java] homeView : homeView member null");
 			} else {
 				checkId = member.getId();
 			}
 			String checkResult = "success";
 			if (id.equals(checkId)) {
 				String checkPw = member.getPw();
-				System.out.println("[controller.jsp]homeView : checkPw =" + member.getPw());
+				System.out.println("[UserController.java] homeView : checkPw =" + member.getPw());
 				if (checkPw.equals(pw)) {
 					System.out.println("로그인 성공");
 /*					member.setId(checkId);
 					member.setPw(checkPw);*/
 					session.setAttribute("member", member);
-					System.out.println("[controller.jsp]homeView : session.setAttributr(member) = " + member);
+					System.out.println("[UserController.java] homeView : session.setAttributr(member) = " + member);
 				} else {
 					System.out.println("비밀번호 틀림");
 					checkResult = "failPw";
@@ -95,22 +95,21 @@ public class ProjectController {
 		String id = request.getParameter("id");
 		String nicName = request.getParameter("nicName");
 		String email = request.getParameter("email");
-		String profile = request.getParameter("profilePath");
+		String profile = null;
 
 		String uploadPath = request.getSession().getServletContext().getRealPath("/upload/");
-		System.out.println("uploadForm POST Start");
-		System.out.println("originalName: " + profilePath.getOriginalFilename());
-		System.out.println("size: " + profilePath.getSize());
-		System.out.println("contentType: " + profilePath.getContentType());
+		System.out.println("[UserController.java] signUpProView : uploadForm POST Start");
+		System.out.println("[UserController.java] signUpProView : originalName = " + profilePath.getOriginalFilename());
+		System.out.println("[UserController.java] signUpProView : size = " + profilePath.getSize());
+		System.out.println("[UserController.java] signUpProView : contentType = " + profilePath.getContentType());
 		String savedName = uploadFile(profilePath.getOriginalFilename(), profilePath.getBytes(), uploadPath);
-		System.out.println("savedName: " + savedName);
-		System.out.println("profile => " + profile);
+		System.out.println("[UserController.java] signUpProView : savedName = " + savedName);
 		if (profilePath.getOriginalFilename() == null || profilePath.getOriginalFilename() == "") {
 			profile = "user.png";
 		} else {
 			profile = savedName;
 		}
-		System.out.println("profile1 => " + profile);
+		System.out.println("[UserController.java] signUpProView : profileResult => " + profile);
 		member.setId(id);
 		member.setProfile(profile);
 		member.setNicName(nicName);
@@ -133,8 +132,7 @@ public class ProjectController {
 		} else {
 			if (member != null) {
 				resultInsert = us.userInsert(member);
-				System.out.println("resultInsert : " + resultInsert);
-				System.out.println("[controller.jsp] signUpProView : resultInsert = " + resultInsert);
+				System.out.println("[UserController.java] signUpProView : resultInsert = " + resultInsert);
 			}
 			model.addAttribute("resultInsert", resultInsert);
 			return "signUpProView";
@@ -146,12 +144,12 @@ public class ProjectController {
 	private String uploadFile(String originalName, byte[] fileData, String uploadPath) throws IOException {
 		UUID uid = UUID.randomUUID();
 		// requestPath = requestPath + "/resources/image";
-		System.out.println("uploadPath->" + uploadPath);
+		System.out.println("[UserController.java] uploadFile : uploadPath = " + uploadPath);
 		// Directory 생성
 		File fileDirectory = new File(uploadPath);
 		if (!fileDirectory.exists()) {
 			fileDirectory.mkdirs();
-			System.out.println("업로드용 폴더 생성 : " + uploadPath);
+			System.out.println("[UserController.java] uploadFile : 업로드용 폴더 생성 : " + uploadPath);
 		}
 
 		String savedName = uid.toString() + "_" + originalName;
@@ -173,42 +171,61 @@ public class ProjectController {
 		return "userModifyView";
 	}
 	@RequestMapping(value = "myPageView")
-	public String myPageView(HttpServletRequest request, Model model, MultipartFile profilePath, String path) {
+	public String myPageView(HttpServletRequest request, Model model, MultipartFile profilePath, String path, HttpSession session) throws IOException {
+		MemberVO member = (MemberVO) session.getAttribute("member");
 		String myPageStatus = request.getParameter("myPageStatus");
-		System.out.println("myPageStatus: " +myPageStatus);
-		MemberVO member = new MemberVO();
+		System.out.println("[UserController.java] myPageView : myPageStatus: " +myPageStatus);
+		String id = member.getId();
+		System.out.println("[UserController.java] myPageView : sessionId = " + id);
 		if(myPageStatus != null) {
 			if(myPageStatus.equals("userModi")) {
-				String id = request.getParameter("id");
 				String pw = request.getParameter("pw");
 				String beforePw = request.getParameter("beforePw");
 				String checkPw = us.selectPw(id);
 				String resultPw = "success";
-				System.out.println("checkPw : "+checkPw);
-				System.out.println("??????");
-				int modResult = 0;
+				System.out.println("[UserController.java] myPageView : checkPw = "+checkPw);
+				String resultModify = "successUpdateModify";
 				
 				if(checkPw.equals(beforePw)) {
 					member.setNicName(request.getParameter("nicName"));
 					member.setId(id);
 					member.setPw(pw);
-					int result = us.updateUser(member);
-					if(result != 0) {
-						modResult = 1;
-					}
-					System.out.println("!!!! " + modResult);
-					
+					int modUpdateResult = us.updateUser(member);
+					if(modUpdateResult < 1) {
+						resultModify = "failUpdateModify";
+					}	
 				} else {
 					resultPw = "failPwCheck";
 					model.addAttribute("resultPw",resultPw);
 					return "forward:userModifyView";
 				}
-				model.addAttribute("modResult",modResult);
+				model.addAttribute("resultModify",resultModify);
 			} else if(myPageStatus.equals("profileModi")) {
-				String profile = request.getParameter("profilePath");
-
 				String uploadPath = request.getSession().getServletContext().getRealPath("/upload/");
+				String profile = null;
+				String baseImg = request.getParameter("baseImg");
 				
+				System.out.println("[UserController.java] myPageView : baseImg = " + baseImg);
+				System.out.println("[UserController.java] myPageView : uploadForm POST Start");
+				System.out.println("[UserController.java] myPageView : originalName = " + profilePath.getOriginalFilename());
+				System.out.println("[UserController.java] myPageView : size = " + profilePath.getSize());
+				System.out.println("[UserController.java] myPageView : contentType = " + profilePath.getContentType());
+				String savedName = uploadFile(profilePath.getOriginalFilename(), profilePath.getBytes(), uploadPath);
+				System.out.println("[UserController.java] myPageView : savedName = " + savedName);
+				if (profilePath.getOriginalFilename() == null || profilePath.getOriginalFilename() == "" || baseImg == "0") {
+					profile = "user.png";
+				} else {
+					profile = savedName;
+				}
+				member.setProfile(profile);
+				member.setId(id);
+				System.out.println("profile => " + profile);
+				int profileResult = us.updateProfile(member);
+				String resultProfile = "successUpdateProfile";
+				if(profileResult < 1) {
+					resultProfile = "failUpdateProfile";
+				}
+				model.addAttribute("resultProfile", resultProfile);
 			}
 		}
 		/*model.addAttribute("myPageStatus",myPageStatus);*/
@@ -218,4 +235,8 @@ public class ProjectController {
 	public String profileModifyView() {
 		return "profileModifyView";
 	}
+/*	@RequestMapping(value = "leaveProc")
+	public String leaveProc() {
+		return "homeView";
+	}*/
 }

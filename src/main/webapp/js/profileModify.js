@@ -1,47 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="header.jsp"%>
-<link type="text/css" rel="stylesheet" href="css/myPage.css">
-<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-<link type="text/css" rel="stylesheet" href="css/signUp.css">
-
-<%@ include file="neck.jsp"%>
-
-
-<hr>
-
-<div class="sidenav">
-	<a onclick="">내 정보</a> 
-	<a onclick="">내가 쓴 글</a> 
-	<a href="userModifyView.do">정보 수정</a> 
-	<a href="#">프로필 수정</a> 
-	<a onclick="">찜 목록</a>
-	<a onclick="">팔로우</a>
-	<a onclick="">포인트 충전</a>
-</div>
-<div id="main">
-	<form action="myPageView.do" name="frm" enctype="multipart/form-data" method="POST">
-	<input type="hidden" name="myPageStatus" value="profileModi">
-	<input type="hidden" id="baseImg" name="baseImg" value="1">
-		<div class="signUpBox">
-			<h1>프로필 사진 수정</h1>
-			<hr>
-			<br>
-			<div id="preview" class="sugnUpProfile">
-				<img src="upload/${sessionScope.member.profile }">
-			</div>
-			<button type="button" id="baseImgBtn" >기본 이미지로 변경</button><br>
-			<br> <label>프로필 이미지</label><br> <input class="input"
-				id="profilePath" name="profilePath" type="file"
-				value="${sessionScope.member.profile }" onchange="fileCheck()"
-				accept='image/jpeg,image/gif,image/png'><br>
-			<br> <input type="hidden" name="path"
-				value="${pageContext.request.contextPath}/resources/image/">
-
-			<input class="regiBtn" type="submit" value="수정완료">
-		</div>
-	</form>
-<script type="text/javascript">
 var rmImg = document.getElementById('preview');
 var upload = document.querySelector('#profilePath');
  /* FileReader 객체 생성 */
@@ -99,7 +55,3 @@ $("#baseImgBtn").click(function(){
 	baseImg.setAttribute("src", "image/user.png");
 	document.getElementById("preview").appendChild(baseImg);
 });
-</script>
-</div>
-<%@ include file="footer.jsp"%>
-

@@ -29,7 +29,7 @@
 		
 		<label>Email</label><br>
 		<input class="input" id="email" type="email" placeholder="Enter Email" name="email" autocomplete="off" 
-		required><button type="button" onclick="mailCheck()">중복확인</button><br>
+		required><button type="button" onclick="mailCheck()" class="dupleCheck">중복확인</button><br>
 		<span id="msgMailCheck" class="checkMsg"></span><br>
 		
 		<label>닉네임</label><br>

@@ -18,17 +18,28 @@
 	<a onclick="">찜 목록</a> 
 	<a onclick="">팔로우</a>
 	<a onclick="">포인트 충전</a>
+	<a href="leaveProc.do">회원 탈퇴</a> <!-- 나중에!! -->
 </div>
 <div id="main">
 </div>
-<c:if test="${modResult == '1'}">
+<c:if test="${resultModify == 'successUpdateModify'}">
 	<script type="text/javascript">
 		alert("회원정보가 수정되었습니다.");  
 	</script>
 </c:if> 
-<c:if test="${modResult == '0'}">
+<c:if test="${resultModify == 'failUpdateModify'}">
 	<script type="text/javascript">
 		alert("회원정보 수정을 실패하였습니다.");  
+	</script>
+</c:if>
+<c:if test="${resultProfile == 'failUpdateProfile'}">
+	<script type="text/javascript">
+		alert("프로필 수정을 실패하였습니다.");  
+	</script>
+</c:if> 
+<c:if test="${resultProfile == 'successUpdateProfile'}">
+	<script type="text/javascript">
+		alert("프로필이 수정되었습니다.");  
 	</script>
 </c:if> 
 <%@ include file="footer.jsp"%>

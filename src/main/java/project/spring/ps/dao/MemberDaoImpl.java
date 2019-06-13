@@ -57,4 +57,9 @@ public class MemberDaoImpl implements MemberDao {
 	public String selectMyNic(String id) {
 		return session.selectOne("selectMyNic", id);
 	}
+
+	@Override
+	public int updateProfile(MemberVO member) {
+		return session.update("updateProfile", member);
+	}
 }
