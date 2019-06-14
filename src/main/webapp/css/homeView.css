@@ -16,4 +16,28 @@
 	width: 100%;
 	height: auto;
 }
+.sortdiv {
+	height: 40px;
+	text-align: center;
+	background-color: #706f6f;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.sortbtn {
+	margin-right:-5px;
+	display:inline-block;
+	text-decoration:none;
+	font-size: 1rem;
+	background-color: #706f6f;
+	color: white;
+	padding: 11px 10px;
+	cursor: pointer;
+}
+
+.sortbtn:hover {
+	background-color: #f47f7f;
+}
+.sortbtn.active{
+	background-color: #f47f7f;
 }

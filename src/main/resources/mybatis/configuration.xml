@@ -4,8 +4,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="MemberVO" type="project.spring.ps.model.MemberVO" />
+		<typeAlias alias="PhotoVO" type="project.spring.ps.model.PhotoVO" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/Member.xml" />
+		<mapper resource="mybatis/Photo.xml" />
 	</mappers>
 </configuration>

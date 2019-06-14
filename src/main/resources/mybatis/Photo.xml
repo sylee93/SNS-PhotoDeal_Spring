@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PhotoVO">
+	<select id="latestBoard" resultType="PhotoVO">
+		select * from Photo order by regidate desc
+	</select>
+	<select id="likeBoard" resultType="PhotoVO">
+		select * from Photo order by likeCount desc
+	</select>
+	<select id="downloadBoard" resultType="PhotoVO">
+		select * from Photo order by downloadCount desc
+	</select>
+</mapper>

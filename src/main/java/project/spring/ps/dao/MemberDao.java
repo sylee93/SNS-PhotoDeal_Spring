@@ -1,6 +1,9 @@
 package project.spring.ps.dao;
 
+import java.util.List;
+
 import project.spring.ps.model.MemberVO;
+import project.spring.ps.model.PhotoVO;
 
 public interface MemberDao {
 
@@ -21,5 +24,7 @@ public interface MemberDao {
 	String selectMyNic(String id);
 
 	int updateProfile(MemberVO member);
+
+	List<PhotoVO> latestBoard();
 
 }

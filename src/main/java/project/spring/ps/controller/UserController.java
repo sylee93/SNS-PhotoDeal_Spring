@@ -2,6 +2,7 @@ package project.spring.ps.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import project.spring.ps.model.MemberVO;
+import project.spring.ps.model.PhotoVO;
+import project.spring.ps.service.PhotoService;
 import project.spring.ps.service.UserService;
 
 @Controller
@@ -25,9 +29,41 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Autowired
 	private UserService us;
-
+	@Autowired
+	private PhotoService ps;
+	
 	@RequestMapping(value = "homeView", method = { RequestMethod.POST, RequestMethod.GET })
 	public String homeView(HttpServletRequest request, HttpSession session, Model model) {
+		// 홈화면에 뿌려줄 사진 리스트	
+		String sortType = request.getParameter("sortType");
+		int checkSort = 0;
+		int btnStatus = 0;
+		if(sortType != null) {
+			checkSort = Integer.parseInt(request.getParameter("sortType"));
+			System.out.println("[UserController.java] homeView : sortType = " + sortType);
+		}
+		if (checkSort == 0) {
+			System.out.println("[UserController.java] homeView : 최신순");
+			List<PhotoVO> latestPhotoList = ps.latestBoard();
+			btnStatus = 0;
+			model.addAttribute("PhotoList",latestPhotoList);
+			model.addAttribute("btnStatus",btnStatus);
+		}else if(checkSort == 1) {
+			System.out.println("[UserController.java] homeView : 인기순");
+			List<PhotoVO> likePhotoList = ps.likeBoard();
+			btnStatus = 1;
+			model.addAttribute("PhotoList",likePhotoList);
+			model.addAttribute("btnStatus",btnStatus);
+		}else {
+			System.out.println("[UserController.java] homeView : 다운순");
+			List<PhotoVO> downloadPhotoList = ps.downloadBoard();
+			btnStatus = 2;
+			model.addAttribute("PhotoList",downloadPhotoList);
+			model.addAttribute("btnStatus",btnStatus);
+		}
+		
+		
+		// 로그인
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		System.out.println("[UserController.java] homeView : session.getAttributr(member) =  " + member);
 		String checkId = null;
@@ -65,8 +101,6 @@ public class UserController {
 				System.out.println("[UserController.java] homeView : checkPw =" + member.getPw());
 				if (checkPw.equals(pw)) {
 					System.out.println("로그인 성공");
-/*					member.setId(checkId);
-					member.setPw(checkPw);*/
 					session.setAttribute("member", member);
 					System.out.println("[UserController.java] homeView : session.setAttributr(member) = " + member);
 				} else {

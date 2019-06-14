@@ -2,89 +2,58 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 <link type="text/css" rel="stylesheet" href="css/homeView.css">
+<!-- <script type="text/javascript" src="js/homeView.js"></script> -->
 <%@ include file="neck.jsp"%>
-<div class="sortdiv">
-	<button class="sortbtn">
+<%
+	String context = request.getContextPath();
+%>
+<input id="btnStatus" type="hidden" value="${btnStatus }">
+<div id="sortdiv" class="sortdiv">
+	<a id="lateBtn" class="sortbtn active" href="homeView.do?sortType=0">
 		<b>최신 순</b>
-	</button>
-	<button class="sortbtn">
-		<b>인기 순</b>
-	</button>
-	<button class="sortbtn">
-		<b>다운로드 순</b>
-	</button>
+	</a> <a id="likeBtn" class="sortbtn" href="homeView.do?sortType=1"> <b>인기
+			순</b>
+	</a> <a id="downBtn" class="sortbtn" href="homeView.do?sortType=2"> <b>다운로드
+			순</b>
+	</a>
 </div>
 <hr class="bodystart">
 <div class="column">
-	<figure>
-		<img src="image/test1.jpg">
-	</figure>
-	<figure>
-		<img src="image/test2.jpg">
-	</figure>
-	<figure>
-		<img src="image/test3.jpg">
-	</figure>
-	<figure>
-		<img src="image/test4.jpg">
-	</figure>
-	<figure>
-		<img src="image/test5.jpg">
-	</figure>
-	<figure>
-		<img src="image/test6.jpg">
-	</figure>
-	<figure>
-		<img src="image/test7.jpg">
-	</figure>
-	<figure>
-		<img src="image/test8.jpg">
-	</figure>
-	<figure>
-		<img src="image/test9.jpg">
-	</figure>
-	<figure>
-		<img src="image/test10.jpg">
-	</figure>
-	<figure>
-		<img src="image/test12.jpg">
-	</figure>
-	<figure>
-		<img src="image/test13.jpg">
-	</figure>
-	<figure>
-		<img src="image/test14.jpg">
-	</figure>
-	<figure>
-		<img src="image/test15.jpg">
-	</figure>
-	<figure>
-		<img src="image/test16.jpg">
-	</figure>
-	<figure>
-		<img src="image/test17.jpg">
-	</figure>
-	<figure>
-		<img src="image/test18.jpg">
-	</figure>
-	<figure>
-		<img src="image/test19.jpg">
-	</figure>
-	<figure>
-		<img src="image/test20.jpg">
-	</figure>
+	<c:forEach var="photoList" items="${PhotoList}">
+		<figure>
+			<img src="image/${photoList.photoPath }">
+		</figure>
+	</c:forEach>
 </div>
+<script type="text/javascript">
+	var btnContainer = document.getElementById("sortdiv");
+	var btns = btnContainer.getElementsByClassName("sortbtn");
+
+	if ($("#btnStatus").value() == 0) {
+		document.getElementById("lateBtn").className = "sortbtn active";
+		document.getElementById("likeBtn").className = "sortbtn";
+		document.getElementById("downBtn").className = "sortbtn";
+	} else if ($("#btnStatus").value() == 1) {
+		document.getElementById("lateBtn").className = "sortbtn";
+		document.getElementById("likeBtn").className = "sortbtn active";
+		document.getElementById("downBtn").className = "sortbtn";
+	} else {
+		document.getElementById("lateBtn").className = "sortbtn";
+		document.getElementById("likeBtn").className = "sortbtn";
+		document.getElementById("downBtn").className = "sortbtn active";
+	}
+</script>
 <c:if test="${checkResult == 'failPw'}">
 	<script type="text/javascript">
-		alert("비밀번호가 올바르지 않습니다.");  
-		location.href="homeView.do";
+		alert("비밀번호가 올바르지 않습니다.");
+		location.href = "homeView.do";
 	</script>
-</c:if> 
+</c:if>
 <c:if test="${checkResult == 'failId'}">
 	<script type="text/javascript">
-		alert("존재하지 않는 아이디입니다.");  
-		location.href="homeView.do";
+		alert("존재하지 않는 아이디입니다.");
+		location.href = "homeView.do";
 	</script>
-</c:if> 
+</c:if>
 <%@ include file="footer.jsp"%>
 

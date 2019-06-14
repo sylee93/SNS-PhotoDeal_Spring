@@ -1,10 +1,13 @@
 package project.spring.ps.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.spring.ps.model.MemberVO;
+import project.spring.ps.model.PhotoVO;
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -61,5 +64,11 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public int updateProfile(MemberVO member) {
 		return session.update("updateProfile", member);
+	}
+
+	@Override
+	public List<PhotoVO> latestBoard() {
+		System.out.println("[PhotoDaoImpl.java] latestBoard");
+		return session.selectList("latestBoard");
 	}
 }

@@ -71,6 +71,7 @@ upload.addEventListener('change',function (e) {
     }
     preview.appendChild(image);
 })
+
 function chk(){
 	if(frm.pw.value!=frm.repeatPw.value) {
 		alert("비밀번호가 일치하지 않습니다.");
