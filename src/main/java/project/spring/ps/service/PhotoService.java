@@ -2,14 +2,14 @@ package project.spring.ps.service;
 
 import java.util.List;
 
-import project.spring.ps.model.PhotoVO;
+import project.spring.ps.model.PhotoMemberVO;
 
 public interface PhotoService {
 
-	List<PhotoVO> latestBoard();
+	List<PhotoMemberVO> latestBoard();
 
-	List<PhotoVO> likeBoard();
+	List<PhotoMemberVO> likeBoard();
 
-	List<PhotoVO> downloadBoard();
+	List<PhotoMemberVO> downloadBoard();
 
 }

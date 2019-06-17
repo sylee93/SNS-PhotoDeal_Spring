@@ -1,6 +1,6 @@
 package project.spring.ps.model;
 
-public class PhotoVO {
+public class PhotoMemberVO {
 	private int photoId;
 	private String photoCreator;
 	private String photoPath;
@@ -13,7 +13,9 @@ public class PhotoVO {
 	private String regiDate;
 	private int viewCount;
 	private int replyCount;
-	
+	private String id;
+	private String nicName;
+	private String profile;
 	public int getPhotoId() {
 		return photoId;
 	}
@@ -47,8 +49,8 @@ public class PhotoVO {
 	public String getPcomment() {
 		return pcomment;
 	}
-	public void setComment(String comment) {
-		this.pcomment = comment;
+	public void setPcomment(String pcomment) {
+		this.pcomment = pcomment;
 	}
 	public String getHashTag() {
 		return hashTag;
@@ -86,6 +88,23 @@ public class PhotoVO {
 	public void setReplyCount(int replyCount) {
 		this.replyCount = replyCount;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getNicName() {
+		return nicName;
+	}
+	public void setNicName(String nicName) {
+		this.nicName = nicName;
+	}
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
 	
-
 }

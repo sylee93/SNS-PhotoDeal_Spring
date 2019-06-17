@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import project.spring.ps.model.MemberVO;
+import project.spring.ps.model.PhotoMemberVO;
 import project.spring.ps.model.PhotoVO;
 import project.spring.ps.service.PhotoService;
 import project.spring.ps.service.UserService;
@@ -38,30 +39,34 @@ public class UserController {
 		String sortType = request.getParameter("sortType");
 		int checkSort = 0;
 		int btnStatus = 0;
+		
 		if(sortType != null) {
 			checkSort = Integer.parseInt(request.getParameter("sortType"));
 			System.out.println("[UserController.java] homeView : sortType = " + sortType);
 		}
 		if (checkSort == 0) {
 			System.out.println("[UserController.java] homeView : 최신순");
-			List<PhotoVO> latestPhotoList = ps.latestBoard();
+			List<PhotoMemberVO> latestPhotoList = ps.latestBoard();
+			
+			System.out.println("[UserController.java] homeView : latestPhotoList = " + latestPhotoList.get(0).getId());
 			btnStatus = 0;
-			model.addAttribute("PhotoList",latestPhotoList);
+			model.addAttribute("photoList",latestPhotoList);
+			
 			model.addAttribute("btnStatus",btnStatus);
 		}else if(checkSort == 1) {
 			System.out.println("[UserController.java] homeView : 인기순");
-			List<PhotoVO> likePhotoList = ps.likeBoard();
+			List<PhotoMemberVO> likePhotoList = ps.likeBoard();
 			btnStatus = 1;
-			model.addAttribute("PhotoList",likePhotoList);
+			model.addAttribute("photoList",likePhotoList);
 			model.addAttribute("btnStatus",btnStatus);
 		}else {
 			System.out.println("[UserController.java] homeView : 다운순");
-			List<PhotoVO> downloadPhotoList = ps.downloadBoard();
+			List<PhotoMemberVO> downloadPhotoList = ps.downloadBoard();
 			btnStatus = 2;
-			model.addAttribute("PhotoList",downloadPhotoList);
+			model.addAttribute("photoList",downloadPhotoList);
 			model.addAttribute("btnStatus",btnStatus);
 		}
-		
+		System.out.println("[UserController.java] homeView : btnStatus " + btnStatus);
 		
 		// 로그인
 		MemberVO member = (MemberVO) session.getAttribute("member");
@@ -84,6 +89,7 @@ public class UserController {
 		if (id == null) {
 			id = "guest";
 		}
+		
 		String pw = request.getParameter("pw");
 		System.out.println("[UserController.java] homeView : checkId =" + checkId);
 		System.out.println("[UserController.java] homeView : getParameter(id) =" + id);

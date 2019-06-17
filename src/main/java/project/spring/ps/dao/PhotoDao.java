@@ -2,14 +2,14 @@ package project.spring.ps.dao;
 
 import java.util.List;
 
-import project.spring.ps.model.PhotoVO;
+import project.spring.ps.model.PhotoMemberVO;
 
 public interface PhotoDao {
 
-	List<PhotoVO> latestBoard();
+	List<PhotoMemberVO> latestBoard();
 
-	List<PhotoVO> likeBoard();
+	List<PhotoMemberVO> likeBoard();
 
-	List<PhotoVO> downloadBoard();
+	List<PhotoMemberVO> downloadBoard();
 
 }

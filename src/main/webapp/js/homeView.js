@@ -1,9 +1,15 @@
-var btnContainer = document.getElementById("sortdiv");
-var btns = btnContainer.getElementsByClassName("sortbtn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
+window.onload = function() {
+	if (document.getElementById("btnStatus").value == 0) {
+		document.getElementById("lateBtn").className = "sortbtn active";
+		document.getElementById("likeBtn").className = "sortbtn";
+		document.getElementById("downBtn").className = "sortbtn";
+	} else if (document.getElementById("btnStatus").value == 1) {
+		document.getElementById("lateBtn").className = "sortbtn";
+		document.getElementById("likeBtn").className = "sortbtn active";
+		document.getElementById("downBtn").className = "sortbtn";
+	} else {
+		document.getElementById("lateBtn").className = "sortbtn";
+		document.getElementById("likeBtn").className = "sortbtn";
+		document.getElementById("downBtn").className = "sortbtn active";
+	}
 }

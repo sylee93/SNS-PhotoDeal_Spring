@@ -1,21 +1,25 @@
 @charset "UTF-8";
 
-.column{
+.column {
 	margin: 30px;
 	column-width: 250px;
 	column-gap: 15px;
 }
-.column figure {
+
+.container {
+	position: relative;
 	display: inline-block;
 	margin: 0;
 	margin-bottom: 15px;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
-.column figure img {
+
+.column div img {
+	
 	vertical-align: top;
 	width: 100%;
-	height: auto;
 }
+
 .sortdiv {
 	height: 40px;
 	text-align: center;
@@ -25,9 +29,9 @@
 }
 
 .sortbtn {
-	margin-right:-5px;
-	display:inline-block;
-	text-decoration:none;
+	margin-right: -5px;
+	display: inline-block;
+	text-decoration: none;
 	font-size: 1rem;
 	background-color: #706f6f;
 	color: white;
@@ -38,6 +42,96 @@
 .sortbtn:hover {
 	background-color: #f47f7f;
 }
-.sortbtn.active{
+
+.sortbtn.active {
 	background-color: #f47f7f;
+}
+
+.overay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	transition: .5s ease;
+	background-color: black;
+}
+
+.container:hover .overay {
+	opacity: 0.6;
+	z-index: 1;
+}
+
+.overayContent {
+	color: white;
+	font-size: 16px;
+	position: relative;
+	width: 100%;
+	height: 100%; 
+	top : 50%; 
+	left: 50%;
+	padding-left : 10px;
+	-webkit-transform : translate(
+	-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+}
+.coin{
+	margin-top:5px;
+	width: 7%;
+}
+.count{
+	margin-right: 15px;
+}
+#right{
+	float: right;
+}
+.contentTop {
+	margin-top: 5%;
+	width:97%;
+	position: absolute;
+	display: block;
+	vertical-align : top;
+}
+
+.contentBottom {
+	text-align:center;
+	width:94%;
+	position:absolute;
+	bottom: 10px;
+}
+
+.contentTop .count img {
+	display:inline-block;
+	height: 20px;
+	width: auto;
+}
+.creatorBox{
+	float: left;
+	font-size: 1.5rem;
+}
+.contentText {
+	display: inline-block;
+	width: 200px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 5px;
+}
+.creator {
+	display : inline-block;
+	margin-right: 2px;
+	border-radius:100%;
+	width: 40px;
+	height: 40px;
+}
+.creator img {
+	vertical-align: middle;
+	width: 40px;
+	height: 40px;
+    border-radius: 100%;
 }

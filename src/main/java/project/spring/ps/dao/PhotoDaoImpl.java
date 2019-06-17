@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import project.spring.ps.model.PhotoVO;
+import project.spring.ps.model.PhotoMemberVO;
 
 @Repository
 public class PhotoDaoImpl implements PhotoDao {
@@ -15,18 +15,17 @@ public class PhotoDaoImpl implements PhotoDao {
 	private SqlSession session;
 	
 	@Override
-	public List<PhotoVO> latestBoard() {
+	public List<PhotoMemberVO> latestBoard() {
 		return session.selectList("latestBoard");
 	}
 
 	@Override
-	public List<PhotoVO> likeBoard() {
+	public List<PhotoMemberVO> likeBoard() {
 		return session.selectList("likeBoard");
 	}
 
 	@Override
-	public List<PhotoVO> downloadBoard() {
+	public List<PhotoMemberVO> downloadBoard() {
 		return session.selectList("downloadBoard");
 	}
-
 }
