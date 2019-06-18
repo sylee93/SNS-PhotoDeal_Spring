@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import project.spring.ps.dao.PhotoDao;
 import project.spring.ps.model.PhotoMemberVO;
+import project.spring.ps.model.PhotoVO;
 
 @Service
 public class PhotoServiceImpl implements PhotoService {
@@ -22,10 +23,17 @@ public class PhotoServiceImpl implements PhotoService {
 		System.out.println("[PhotoServiceImpl.java] likeBoard");
 		return pd.likeBoard();
 	}
+	
 	@Override
 	public List<PhotoMemberVO> downloadBoard() {
 		System.out.println("[PhotoServiceImpl.java] downloadBoard");
 		return pd.downloadBoard();
+	}
+
+	@Override
+	public PhotoVO selectPhoto(int photoId) {
+		System.out.println("[PhotoServiceImpl.java] selectPhoto");
+		return pd.selectPhoto(photoId);
 	}
 
 }

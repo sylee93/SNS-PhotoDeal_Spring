@@ -1,0 +1,52 @@
+.main {
+	margin: 0 auto;
+	width: 600px;
+}
+.count {
+	
+	margin: 50px 10px 10px 0;
+	float: right;
+}
+.count img {
+	height: 20px;
+	width: auto;
+}
+.mainPhoto {
+	width: 100%;
+	height: auto;
+}
+.mainPhoto img{
+	width: 100%;
+}
+.heartBtn {
+	display: inline-block;
+	cursor: pointer;
+}
+.heartBtn img {
+	display: inline-block;
+	margin: 10px;
+	height: 40px;
+	width: auto;
+}
+.downBtnBox {
+	height : 40px;
+	float:right;
+	display: inline-block;
+	
+}
+.downBtn {
+	background-color: #f47f7f;
+	color : white;
+	font-size : 1.2rem;
+	font-weight: bold;
+	border-style : none;
+	margin-top: 7px;
+	height: 40px;
+	width:150px;
+	cursor: pointer;
+	opacity: 0.8;
+}
+.downBtn:hover {
+	background-color : #f47f7f;
+	opacity: 1;
+}

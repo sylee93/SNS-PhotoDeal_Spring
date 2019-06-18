@@ -16,6 +16,7 @@ public class PhotoMemberVO {
 	private String id;
 	private String nicName;
 	private String profile;
+	
 	public int getPhotoId() {
 		return photoId;
 	}

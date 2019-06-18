@@ -3,39 +3,43 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="PhotoVO">
 	<resultMap type="PhotoMemberVO" id="PhotoMemberVO">
-		<result column="photoId" property="photoId"/>
-		<result column="photoCreator" property="photoCreator"/>
-		<result column="photoPath" property="photoPath"/>
-		<result column="priceStatus" property="priceStatus"/>
-		<result column="pcomment" property="pcomment"/>
-		<result column="hashTag" property="hashTag"/>
-		<result column="downloadCount" property="downloadCount"/>
-		<result column="likeCount" property="likeCount"/>
-		<result column="regiDate" property="regiDate"/>
-		<result column="viewCount" property="viewCount"/>
-		<result column="replyCount" property="replyCount"/>
-		<result column="nicName" property="nicName"/>
-		<result column="profile" property="profile"/>
+		<result column="photoId" property="photoId" />
+		<result column="photoCreator" property="photoCreator" />
+		<result column="photoPath" property="photoPath" />
+		<result column="priceStatus" property="priceStatus" />
+		<result column="pcomment" property="pcomment" />
+		<result column="hashTag" property="hashTag" />
+		<result column="downloadCount" property="downloadCount" />
+		<result column="likeCount" property="likeCount" />
+		<result column="regiDate" property="regiDate" />
+		<result column="viewCount" property="viewCount" />
+		<result column="replyCount" property="replyCount" />
+		<result column="nicName" property="nicName" />
+		<result column="profile" property="profile" />
 	</resultMap>
-	
-	<select id="latestBoard" resultMap="PhotoMemberVO" >
-		SELECT * 
-		FROM Photo p, Member m
-		WHERE p.photoCreator = m.id
+
+	<select id="latestBoard" resultMap="PhotoMemberVO">
+		SELECT *
+		FROM Photo p
+		LEFT JOIN Member m
+		ON p.photoCreator = m.id
 		ORDER BY regidate desc
 	</select>
 	<select id="likeBoard" resultType="PhotoVO">
-		SELECT * 
+		SELECT *
 		FROM Photo p
 		LEFT JOIN Member m
 		ON p.photoCreator = m.id
 		ORDER BY likeCount desc
 	</select>
 	<select id="downloadBoard" resultType="PhotoVO">
-		SELECT * 
+		SELECT *
 		FROM Photo p
 		LEFT JOIN Member m
 		ON p.photoCreator = m.id
 		ORDER BY downloadCount desc
+	</select>
+	<select id="selectPhoto" parameterType="Int" resultType="PhotoVO">
+		select * from Photo where photoId = #{photoId}
 	</select>
 </mapper>

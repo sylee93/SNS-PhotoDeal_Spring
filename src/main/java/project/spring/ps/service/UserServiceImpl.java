@@ -1,13 +1,11 @@
 package project.spring.ps.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.spring.ps.dao.MemberDao;
 import project.spring.ps.model.MemberVO;
-import project.spring.ps.model.PhotoVO;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -67,11 +65,4 @@ public class UserServiceImpl implements UserService {
 		System.out.println("[UserServiceImpl.java] updateProfile");
 		return md.updateProfile(member);
 	}
-
-/*	@Override
-	public List<PhotoVO> latestBoard() {
-		System.out.println("[PhotoServiceImpl.java] latestBoard");
-		return md.latestBoard();
-	}*/
-
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.spring.ps.model.PhotoMemberVO;
+import project.spring.ps.model.PhotoVO;
 
 @Repository
 public class PhotoDaoImpl implements PhotoDao {
@@ -27,5 +28,10 @@ public class PhotoDaoImpl implements PhotoDao {
 	@Override
 	public List<PhotoMemberVO> downloadBoard() {
 		return session.selectList("downloadBoard");
+	}
+
+	@Override
+	public PhotoVO selectPhoto(int photoId) {
+		return session.selectOne("selectPhoto", photoId);
 	}
 }

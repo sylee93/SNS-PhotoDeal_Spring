@@ -3,6 +3,7 @@ package project.spring.ps.dao;
 import java.util.List;
 
 import project.spring.ps.model.PhotoMemberVO;
+import project.spring.ps.model.PhotoVO;
 
 public interface PhotoDao {
 
@@ -11,5 +12,7 @@ public interface PhotoDao {
 	List<PhotoMemberVO> likeBoard();
 
 	List<PhotoMemberVO> downloadBoard();
+
+	PhotoVO selectPhoto(int photoId);
 
 }

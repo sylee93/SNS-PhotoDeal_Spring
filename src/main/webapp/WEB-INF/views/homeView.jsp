@@ -3,6 +3,7 @@
 <%@ include file="header.jsp"%>
 <link type="text/css" rel="stylesheet" href="css/homeView.css">
 <script type="text/javascript" src="js/homeView.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <%@ include file="neck.jsp"%>
 <%
 	String context = request.getContextPath();
@@ -18,10 +19,9 @@
 	<c:forEach var="photoList" items="${photoList}">
 		<div class="container">
 			<img class="columnImg" src="image/${photoList.photoPath }">
-			<div class="overay">
+			<div class="overay" onclick="location.href='detailPhotoView.do?photoId=${photoList.photoId}'">
 				<div class="overayContent">
-					<div class="contentTop">
-					
+					<div class="contentTop">		
 						<span class="count">
 							<img src="image/download2.png" alt="down">
 							${photoList.downloadCount }
@@ -56,7 +56,6 @@
 		</div>
 	</c:forEach>
 </div>
-
 <c:if test="${checkResult == 'failPw'}">
 	<script type="text/javascript">
 		alert("비밀번호가 올바르지 않습니다.");

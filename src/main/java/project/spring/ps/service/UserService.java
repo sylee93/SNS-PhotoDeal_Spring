@@ -1,9 +1,7 @@
 package project.spring.ps.service;
 
-import java.util.List;
 
 import project.spring.ps.model.MemberVO;
-import project.spring.ps.model.PhotoVO;
 
 public interface UserService {
 
@@ -25,6 +23,5 @@ public interface UserService {
 
 	int updateProfile(MemberVO member);
 
-/*	List<PhotoVO> latestBoard();*/
 
 }

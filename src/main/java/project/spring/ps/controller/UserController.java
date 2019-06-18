@@ -8,10 +8,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -21,13 +18,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import project.spring.ps.model.MemberVO;
 import project.spring.ps.model.PhotoMemberVO;
-import project.spring.ps.model.PhotoVO;
 import project.spring.ps.service.PhotoService;
 import project.spring.ps.service.UserService;
 
 @Controller
 public class UserController {
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Autowired
 	private UserService us;
 	@Autowired
@@ -48,10 +43,8 @@ public class UserController {
 			System.out.println("[UserController.java] homeView : 최신순");
 			List<PhotoMemberVO> latestPhotoList = ps.latestBoard();
 			
-			System.out.println("[UserController.java] homeView : latestPhotoList = " + latestPhotoList.get(0).getId());
 			btnStatus = 0;
 			model.addAttribute("photoList",latestPhotoList);
-			
 			model.addAttribute("btnStatus",btnStatus);
 		}else if(checkSort == 1) {
 			System.out.println("[UserController.java] homeView : 인기순");
@@ -94,7 +87,7 @@ public class UserController {
 		System.out.println("[UserController.java] homeView : checkId =" + checkId);
 		System.out.println("[UserController.java] homeView : getParameter(id) =" + id);
 		System.out.println("[UserController.java] homeView : getParameter(pw) =" + pw);
-		if (id != "guest" && checkId == null) {
+		if (id != "guest" && checkId == null) { // 로그인이 안되있는 상태일 경우
 			member = us.checkLogin(id);
 			if (member == null) {
 				System.out.println("[UserController.java] homeView : homeView member null");
