@@ -29,12 +29,12 @@
 	width: auto;
 }
 .downBtnBox {
-	height : 40px;
+	height : 80px;
 	float:right;
 	display: inline-block;
-	
 }
 .downBtn {
+	display : inline-block;
 	background-color: #f47f7f;
 	color : white;
 	font-size : 1.2rem;
@@ -49,4 +49,48 @@
 .downBtn:hover {
 	background-color : #f47f7f;
 	opacity: 1;
+}
+.reply {
+	margin-top : 70px;
+	width : 600px;
+	height: 300px;
+}
+.replyInPutTable{
+	width: 600px;
+	height: 30px;
+}
+.profileTd {
+	width: 7%;
+	height: 40px;
+}
+.replyProfile {
+	height: 40px;
+	width: 40px;
+	border-radius: 100%;
+}
+.nicTd {
+	width: 13%;
+}
+.replyNic{
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+.inputTd {
+	width: 65%;
+}
+.inputTd input {
+	width: 100%;
+}
+.buttonTd {
+	width: 15%;
+}
+.replyBtn {
+	background-color: #f47f7f;
+	border-style: none;
+	height: 30px;
+	color: white;
+	font-weight: bold;
+}
+.reProfile{
+	width: 20%;
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReplyVO">
+	<resultMap type="ReplyVO" id="ReplyVO">
+		<result column="replyId" property="replyId" />
+		<result column="photoId" property="photoId" />
+		<result column="creator" property="creator" />
+		<result column="content" property="content" />
+		<result column="replyDate" property="replyDate" />
+		<result column="nicName" property="nicName" />
+		<result column="profile" property="profile" />
+	</resultMap>
+	<select id="selectReplyList" parameterType="Int" resultMap="ReplyVO">
+		select r.replyid, r.photoid, r.creator, r.content, r.replydate, m.nicname, m.profile
+		from reply r
+		left join member m
+		on r.creator = m.id
+		where photoId = 3
+		order by replyDate desc
+	</select>
+</mapper>

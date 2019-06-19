@@ -5,10 +5,12 @@
 	<typeAliases>
 		<typeAlias alias="MemberVO" type="project.spring.ps.model.MemberVO" />
 		<typeAlias alias="PhotoVO" type="project.spring.ps.model.PhotoVO" />
+		<typeAlias alias="ReplyVO" type="project.spring.ps.model.ReplyVO" />
 		<typeAlias alias="PhotoMemberVO" type="project.spring.ps.model.PhotoMemberVO" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/Member.xml" />
 		<mapper resource="mybatis/Photo.xml" />
+		<mapper resource="mybatis/Reply.xml" />
 	</mappers>
 </configuration>
