@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReplyVO">
+	<resultMap type="ReplyVO" id="ReplyVO">
+		<result column="replyId" property="replyId" />
+		<result column="photoId" property="photoId" />
+		<result column="creator" property="creator" />
+		<result column="content" property="content" />
+		<result column="replyDate" property="replyDate" />
+		<result column="nicName" property="nicName" />
+		<result column="profile" property="profile" />
+	</resultMap>
+	<select id="selectReplyList" parameterType="Int" resultMap="ReplyVO">
+		select r.replyId, r.photoId, r.creator, r.content, r.replyDate, m.nicName, m.profile
+		from reply r
+		left join member m
+		on r.creator = m.id
+		where photoId = #{photoId}
+		order by replyDate desc
+	</select>
+	<insert id="insertReply" parameterType="ReplyVO">
+		insert into reply(replyId, photoId, creator, content)
+		values(reply_seq.nextval,#{photoId},#{creator},#{content})
+	</insert>
+	<select id="selectReplyAjax" parameterType="ReplyVO" resultMap="ReplyVO">
+		select *
+		from (select r.replyId, r.photoId, r.creator, r.content, r.replyDate, m.nicName, m.profile
+			from reply r
+			left join member m
+			on r.creator = m.id
+			where r.creator = #{creator} and photoId = #{photoId}
+			order by replyDate desc) a
+		where <![CDATA[rownum <= 1]]>
+	</select>
+	<delete id="deleteReply" parameterType="Int">
+		delete from reply where replyId = #{replyId}
+	</delete>
+	<select id="replyMsg" parameterType="Int" resultType="ReplyVO">
+		select * from reply where replyId = #{replyId}
+	</select>
+	<update id="updateReply" parameterType="ReplyVO">
+		update reply set content = #{content} where replyId = #{replyId}
+	</update>
+</mapper>

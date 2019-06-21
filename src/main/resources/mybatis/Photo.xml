@@ -25,14 +25,14 @@
 		ON p.photoCreator = m.id
 		ORDER BY regidate desc
 	</select>
-	<select id="likeBoard" resultType="PhotoVO">
+	<select id="likeBoard" resultMap="PhotoMemberVO">
 		SELECT *
 		FROM Photo p
 		LEFT JOIN Member m
 		ON p.photoCreator = m.id
 		ORDER BY likeCount desc
 	</select>
-	<select id="downloadBoard" resultType="PhotoVO">
+	<select id="downloadBoard" resultMap="PhotoMemberVO">
 		SELECT *
 		FROM Photo p
 		LEFT JOIN Member m

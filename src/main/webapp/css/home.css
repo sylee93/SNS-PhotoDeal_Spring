@@ -168,13 +168,19 @@ nav {
 .profile:hover .profile-content{
 	display: block;
 }
-
+.push {
+	height: 250px;
+}
 footer {
-	height: 300px;
-	margin-top: auto;
+	display : block;
+	height : 150px;
+	left:0;
+	bottom:0;
+	width : 100%;
 	text-align: center;
-	background-color: white;
+	background-color: #fa8f8f;
 	font-weight: bold;
-	color: black;
+	color: white;
 	overflow: hidden;
+	padding:  15px 0;
 }

@@ -122,7 +122,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "signUpProView", method = RequestMethod.POST)
-	public String signUpProView(HttpServletRequest request, Model model, MultipartFile profilePath, String path)
+	public String signUpProView(HttpServletRequest request, Model model, MultipartFile profilePath)
 			throws Exception {
 		MemberVO member = new MemberVO();
 		String id = request.getParameter("id");

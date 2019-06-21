@@ -3,6 +3,7 @@ package project.spring.ps.model;
 public class AttentionlistVO {
 	private String attentionId;
 	private int likePhotoId;
+	
 	public String getAttentionId() {
 		return attentionId;
 	}

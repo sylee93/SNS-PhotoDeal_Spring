@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import project.spring.ps.dao.PhotoDao;
+import project.spring.ps.model.AttentionlistVO;
 import project.spring.ps.model.PhotoMemberVO;
 import project.spring.ps.model.PhotoVO;
 
@@ -34,6 +35,21 @@ public class PhotoServiceImpl implements PhotoService {
 	public PhotoVO selectPhoto(int photoId) {
 		System.out.println("[PhotoServiceImpl.java] selectPhoto");
 		return pd.selectPhoto(photoId);
+	}
+	@Override
+	public int insertZzim(AttentionlistVO attention) {
+		System.out.println("[PhotoServiceImpl.java] insertZzim");
+		return pd.insertZzim(attention);
+	}
+	@Override
+	public AttentionlistVO selectZzim(AttentionlistVO attentionlist) {
+		System.out.println("[PhotoServiceImpl.java] selectZzim");
+		return pd.selectZzim(attentionlist);
+	}
+	@Override
+	public int deleteZzim(AttentionlistVO attention) {
+		System.out.println("[PhotoServiceImpl.java] deleteZzim");
+		return pd.deleteZzim(attention);
 	}
 
 }
