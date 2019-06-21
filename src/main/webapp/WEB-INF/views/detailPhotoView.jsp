@@ -31,24 +31,8 @@
 		</div>
 	</div>
 </div>
-<div class="main reply">
-	<table class="replyInPutTable">
-		<tr>
-			<td class="profileTd"><img class="replyProfile" src="upload/${sessionScope.member.profile}"></td>
-			<td class="nicTd"><label class="replyNic">${sessionScope.member.nicName}</label></td>
-			<td class="inputTd"><input type="text" maxlength="100" placeholder="댓글 입력.."></td>
-			<td class="buttonTd"><button class="replyBtn">댓글 쓰기</button></td>
-		<tr>
-	</table>
-	<table class="replyInPutTable">
-		<c:forEach var="replyList" items="${replyList}">
-		<tr>
-			<td class="reProfile"><img class="profileTd" src="upload/${replyList.profile }"></td>
-			<td class="nicTd"><label class="replyNic">${replyList.nicName }</label></td>
-			<td class="inputTd">${replyList.content }</td>
-		</tr>
-		</c:forEach>
-	</table>
+<div class="main refly">
+
 </div>
 <%@ include file="footer.jsp"%>
 
