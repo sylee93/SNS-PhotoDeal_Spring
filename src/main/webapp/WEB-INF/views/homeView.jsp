@@ -13,12 +13,15 @@
 	<a id="lateBtn" class="sortbtn active" href="homeView.do?sortType=0"><b>최신 순</b></a>
 	<a id="likeBtn" class="sortbtn" href="homeView.do?sortType=1"> <b>인기 순</b></a>
 	<a id="downBtn" class="sortbtn" href="homeView.do?sortType=2"> <b>다운로드 순</b></a>
+	<c:if test="${sessionScope.member.id ne null }">
+		<a id="writeBtn" class = "sortbtn" href="writeView.do"><b>글쓰기</b></a>
+	</c:if>
 </div>
 <hr class="bodystart">
 <div class="column">
 	<c:forEach var="photoList" items="${photoList}">
 		<div class="container">
-			<img class="columnImg" src="image/${photoList.photoPath }">
+			<img class="columnImg" src="upload/${photoList.photoPath }">
 			<div class="overay" onclick="location.href='detailPhotoView.do?photoId=${photoList.photoId}'">
 				<div class="overayContent">
 					<div class="contentTop">		

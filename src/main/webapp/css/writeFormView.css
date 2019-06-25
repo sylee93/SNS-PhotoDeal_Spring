@@ -1,0 +1,43 @@
+.main{
+	margin: 0 auto;
+	width: 50%;
+	margin-top: 5%;
+}
+#preview {
+	width : 400px;
+	height: 400px;
+	margin: 0 auto;
+}
+#preview img{
+	display: block;
+	width: 100%;
+}
+#photoPath{
+	width: 100%;
+	border-style: none;
+	height: 30px;
+	border: none;
+	background-color: #fff0f0;
+	opacity: 0.8;
+	padding-left: 5px;
+}
+.main label{
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #706f6f;
+}
+.regiBtn{
+	width : 100%;
+	margin: 0 auto;
+	border:none;
+	background-color: #f47f7f;
+	height : 50px;
+	font-weight: bold;
+	font-size: 2rem;
+	color: white;
+	opacity: 0.8;
+	cursor: point;
+}
+.regiBtn:hover  {
+	opacity: 1;
+}

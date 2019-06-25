@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import project.spring.ps.dao.PhotoDao;
 import project.spring.ps.model.AttentionlistVO;
+import project.spring.ps.model.MemberVO;
 import project.spring.ps.model.PhotoMemberVO;
 import project.spring.ps.model.PhotoVO;
 
@@ -50,6 +51,31 @@ public class PhotoServiceImpl implements PhotoService {
 	public int deleteZzim(AttentionlistVO attention) {
 		System.out.println("[PhotoServiceImpl.java] deleteZzim");
 		return pd.deleteZzim(attention);
+	}
+	@Override
+	public int updateZzimUp(int photoId) {
+		System.out.println("[PhotoServiceImpl.java] updateZzim");
+		return pd.updateZzimUp(photoId);
+	}
+	@Override
+	public int updateZzimDown(int photoId) {
+		System.out.println("[PhotoServiceImpl.java] updateZzimDown");
+		return pd.updateZzimDown(photoId);
+	}
+	@Override
+	public int updateView() {
+		System.out.println("[PhotoServiceImpl.java] updateView");
+		return pd.updateView();
+	}
+	@Override
+	public int insertPhoto(PhotoVO photo) {
+		System.out.println("[PhotoServiceImpl.java] updateView");
+		return pd.insertPhoto(photo);
+	}
+	@Override
+	public MemberVO selectCreator(String creatorId) {
+		System.out.println("[PhotoServiceImpl.java] selectCreator");
+		return pd.selectCreator(creatorId);
 	}
 
 }

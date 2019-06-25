@@ -12,7 +12,14 @@
 
 <div class="main">
 <input type="hidden" id="photoIdParam" value="${photo.photoId }">
-	<div>
+	<div class="photoInfo">
+		<c:if test="${sessionScope.member.id ne null}">
+			<div class="modiBtnBox">
+			<button type="button" class="modiBtn" onclick="location.href='photoModifyView.do?photoId=${photo.photoId}'">수정</button>
+		</div>
+		</c:if>
+		<span class="creator"> <img src="upload/${creator.profile}" >
+			${creator.nicName } </span>
 		<span class="count"> <img src="image/greyView.png" alt="view">
 			${photo.viewCount }
 		</span> 
@@ -24,9 +31,12 @@
 		</span>
 	</div>
 	<div class="mainPhoto">
-		<img src="image/${photo.photoPath }">
+		<img src="upload/${photo.photoPath }">
 	</div>
-	<div class="photoBtn">
+	<div class="comment">
+		${photo.pcomment }
+	</div>
+	<div class="photoBtn" >
 		<c:if test="${sessionScope.member.id ne null}">
 			<c:if test="${attentionlist ne null }">
 				<div class="heartBtn" onclick="clickHeart()">
@@ -143,7 +153,6 @@ function clickHeart(){
 			data : {photoId : photoId, check : "grey" },
 			dataType:'text',
 			success: function(data){
-				alert(data);
 				$("#heartCheck").attr("src",data);
 			}
 		})	
@@ -155,7 +164,6 @@ function clickHeart(){
 			data : {photoId : photoId, check : "red"},
 			dataType:'text',
 			success: function(data){
-				alert(data);
 				$("#heartCheck").attr("src",data);
 			}
 		})

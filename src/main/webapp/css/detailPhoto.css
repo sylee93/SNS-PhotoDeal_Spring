@@ -2,9 +2,22 @@
 	margin: 0 auto;
 	width: 600px;
 }
+.photoInfo{
+	margin-top: 20px;
+}
+.creator {
+	position: absolute;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+.creator img{
+	height: 30px;
+	width: 30px;
+	border-radius: 100%;
+}
+
 .count {
-	
-	margin: 50px 10px 10px 0;
+	margin: 10px 10px 10px 0;
 	float: right;
 }
 .count img {
@@ -119,4 +132,21 @@
 .inputUpdate{
 	width: 60%;
 	margin-right: 10px;
+}
+.comment{
+	background-color: #eeeeee;
+	width: 600px;
+	height: auto;
+	overflow: scroll;
+	word-wrap : break-word;
+}
+.modiBtnBox{
+	float: right;
+	margin-bottom: 15px;
+}
+.modiBtn{
+	border: none;
+	font-size: 1.2rem;
+	font-weight: bold;
+	cursor: pointer;
 }

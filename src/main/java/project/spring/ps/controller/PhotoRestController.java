@@ -31,11 +31,13 @@ public class PhotoRestController {
 		attention.setLikePhotoId(photoId);
 		if(check.equals("grey")) {
 			int result = ps.insertZzim(attention);
+			int zzimUp = ps.updateZzimUp(photoId);
 			if (result <= 0){
 				heart = "image/greyHeart.png";
 			}
 		} else {
 			int result = ps.deleteZzim(attention);
+			int zzimDown = ps.updateZzimDown(photoId);
 			if(result > 0) {
 				heart = "image/greyHeart.png";
 			} else {

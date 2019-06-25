@@ -37,6 +37,11 @@
 	padding: 11px 10px;
 	cursor: pointer;
 }
+#writeBtn{
+	float: left;
+	font-weight:bold;
+	margin-left: 50px;
+}
 
 .sortbtn:hover {
 	background-color: #f47f7f;
@@ -61,6 +66,7 @@
 
 .container:hover .overay {
 	opacity: 0.6;
+	cursor: pointer;
 }
 
 .overayContent {

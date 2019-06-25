@@ -23,23 +23,39 @@
 		FROM Photo p
 		LEFT JOIN Member m
 		ON p.photoCreator = m.id
-		ORDER BY regidate desc
+		ORDER BY regidate desc, photoId desc
 	</select>
 	<select id="likeBoard" resultMap="PhotoMemberVO">
 		SELECT *
 		FROM Photo p
 		LEFT JOIN Member m
 		ON p.photoCreator = m.id
-		ORDER BY likeCount desc
+		ORDER BY likeCount desc, photoId desc 
 	</select>
 	<select id="downloadBoard" resultMap="PhotoMemberVO">
 		SELECT *
 		FROM Photo p
 		LEFT JOIN Member m
 		ON p.photoCreator = m.id
-		ORDER BY downloadCount desc
+		ORDER BY downloadCount desc, photoId desc
 	</select>
 	<select id="selectPhoto" parameterType="Int" resultType="PhotoVO">
 		select * from Photo where photoId = #{photoId}
+	</select>
+	<update id="updateZzimUp" parameterType="Int">
+		update photo set likecount = likecount + 1 where photoId = #{photoId}
+	</update>
+	<update id="updateZzimDown" parameterType="Int">
+		update photo set likecount = likecount - 1 where photoId = #{photoId}
+	</update>
+	<update id="updateView">
+		update photo set viewCount = viewCount + 1
+	</update>
+	<insert id="insertPhoto" parameterType="PhotoVO">
+		insert into Photo(photoId, photoCreator, photoPath, priceStatus, price, pComment, hashTag, downloadCount, likeCount, viewCount, replyCount)
+		values(photo_SEQ.nextval, #{photoCreator}, #{photoPath}, #{priceStatus}, #{price}, #{pcomment}, #{hashTag}, 0, 0, 0, 0)
+	</insert>
+	<select id="selectCreator" parameterType="java.lang.String" resultType="MemberVO">
+		select * from member where id = #{creatorId}
 	</select>
 </mapper>

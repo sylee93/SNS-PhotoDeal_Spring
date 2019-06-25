@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.spring.ps.model.AttentionlistVO;
+import project.spring.ps.model.MemberVO;
 import project.spring.ps.model.PhotoMemberVO;
 import project.spring.ps.model.PhotoVO;
 
@@ -51,5 +52,30 @@ public class PhotoDaoImpl implements PhotoDao {
 	@Override
 	public int deleteZzim(AttentionlistVO attention) {
 		return session.delete("deleteZzim", attention);
+	}
+
+	@Override
+	public int updateZzimUp(int photoId) {
+		return session.update("updateZzimUp", photoId);
+	}
+
+	@Override
+	public int updateZzimDown(int photoId) {
+		return session.update("updateZzimDown", photoId);
+	}
+
+	@Override
+	public int updateView() {
+		return session.update("updateView");
+	}
+
+	@Override
+	public int insertPhoto(PhotoVO photo) {
+		return session.insert("insertPhoto", photo);
+	}
+
+	@Override
+	public MemberVO selectCreator(String creatorId) {
+		return session.selectOne("selectCreator", creatorId);
 	}
 }
