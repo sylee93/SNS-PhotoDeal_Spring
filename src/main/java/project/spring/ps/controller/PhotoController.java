@@ -114,11 +114,6 @@ public class PhotoController {
 		String hashTag = request.getParameter("hashTag");
 		String comment = request.getParameter("comment");
 		comment = comment.replaceAll("\r\n", "<br>");
-		if(priceStatus == 0) {
-			priceStatus = 1;
-		} else {
-			priceStatus = 2;
-		}
 		
 		System.out.println("savedName : " + savedName);
 		System.out.println("priceStatus : " + priceStatus);
@@ -133,16 +128,45 @@ public class PhotoController {
 		photo.setPhotoPath(savedName);
 		photo.setPrice(point);
 		photo.setPriceStatus(priceStatus);
-		photo.setComment(comment);
+		photo.setPcomment(comment);
 		
 		int result = ps.insertPhoto(photo);
 		int insertPhotoResult = result;
 		model.addAttribute("insertPhotoResult",insertPhotoResult);
 		return "writeProView";
 	}
-	@RequestMapping("/photoModifyView")
-	public String photoModifyView(HttpServletRequest request) {
-		String photoId = request.getParameter("photoId");
-		return null;
+	@RequestMapping("/modifyPhotoView")
+	public String photoModifyView(HttpServletRequest request, Model model) {
+		int photoId = Integer.parseInt(request.getParameter("photoId"));
+		PhotoVO photo = ps.selectPhoto(photoId);
+		String comment = photo.getPcomment();
+		comment = comment.replaceAll("<br>","\r\n");
+		photo.setPcomment(comment);
+		System.out.println("priceStatus = " +photo.getPriceStatus());
+		model.addAttribute("photo",photo);
+		return "modifyPhotoView";
+	}
+	@RequestMapping("/modifyProView")
+	public String modifyProView(HttpServletRequest request, Model model) {
+		int photoId = Integer.parseInt(request.getParameter("photoId"));
+		int priceStatus = Integer.parseInt(request.getParameter("priceStatus"));
+		String comment = request.getParameter("comment");
+		String hashTag = request.getParameter("hashTag");
+		PhotoVO photo = new PhotoVO();
+		photo.setPhotoId(photoId);
+		photo.setPcomment(comment);
+		photo.setPriceStatus(priceStatus);
+		photo.setPrice(Integer.parseInt(request.getParameter("price")));
+		photo.setHashTag(hashTag);
+		int modifyPhotoResult = ps.updatePhoto(photo);
+		model.addAttribute(modifyPhotoResult);
+		return "modifyProView";
+	}
+	@RequestMapping("/deletePhoto")
+	public String deletePhoto(HttpServletRequest request, Model model) {
+		int photoId = Integer.parseInt(request.getParameter("photoId"));
+		int deletePhotoResult = ps.deletePhoto(photoId);
+		model.addAttribute("deletePhotoResult",deletePhotoResult);
+		return "deletePhotoPro";
 	}
 }

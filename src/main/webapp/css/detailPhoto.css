@@ -1,12 +1,17 @@
 .main {
-	margin: 0 auto;
+	margin: 30px auto;
 	width: 600px;
 }
 .photoInfo{
+	position: relative;
 	margin-top: 20px;
+	height: 50px;
 }
+
 .creator {
-	position: absolute;
+	position : relative;
+	top : 10px;
+	vertical-align: bottom;
 	font-size: 1.5rem;
 	font-weight: bold;
 }
@@ -17,8 +22,12 @@
 }
 
 .count {
-	margin: 10px 10px 10px 0;
+	position: relative;
+	top: 5px;
+	left: 100px;
+	margin: 10px 10px 0 0;
 	float: right;
+	vertical-align: bottom;
 }
 .count img {
 	height: 20px;
@@ -141,8 +150,10 @@
 	word-wrap : break-word;
 }
 .modiBtnBox{
+	position : relative;
+	bottom : 20px;
+	display: block;
 	float: right;
-	margin-bottom: 15px;
 }
 .modiBtn{
 	border: none;

@@ -77,5 +77,15 @@ public class PhotoServiceImpl implements PhotoService {
 		System.out.println("[PhotoServiceImpl.java] selectCreator");
 		return pd.selectCreator(creatorId);
 	}
+	@Override
+	public int updatePhoto(PhotoVO photo) {
+		System.out.println("[PhotoServiceImpl.java] updatePhoto");
+		return pd.updatePhoto(photo);
+	}
+	@Override
+	public int deletePhoto(int photoId) {
+		System.out.println("[PhotoServiceImpl.java] deletePhoto");
+		return pd.deletePhoto(photoId);
+	}
 
 }

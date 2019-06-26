@@ -15,9 +15,11 @@ label {
 	opacity: 0.8;
 	padding-left: 5px;
 }
-#point {
-	background-color : #d5d5d5;
+input[name=price] {
 	width: 60%;
+}
+.input .grey{
+	background-color : #d5d5d5;
 }
 #hashTag{
 	width: 100%;

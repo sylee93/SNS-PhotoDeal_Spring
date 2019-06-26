@@ -78,4 +78,14 @@ public class PhotoDaoImpl implements PhotoDao {
 	public MemberVO selectCreator(String creatorId) {
 		return session.selectOne("selectCreator", creatorId);
 	}
+
+	@Override
+	public int updatePhoto(PhotoVO photo) {
+		return session.update("updatePhoto", photo);
+	}
+
+	@Override
+	public int deletePhoto(int photoId) {
+		return session.delete("deletePhoto", photoId);
+	}
 }

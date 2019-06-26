@@ -9,15 +9,15 @@
 	String context = request.getContextPath();
     System.out.println("context->"+context);
 %>
-
 <div class="main">
 <input type="hidden" id="photoIdParam" value="${photo.photoId }">
-	<div class="photoInfo">
-		<c:if test="${sessionScope.member.id ne null}">
-			<div class="modiBtnBox">
-			<button type="button" class="modiBtn" onclick="location.href='photoModifyView.do?photoId=${photo.photoId}'">수정</button>
-		</div>
+	<div class="modiBtnBox">
+		<c:if test="${sessionScope.member.id eq creator.id}">
+			<button type="button" class="modiBtn" onclick="location.href='modifyPhotoView.do?photoId=${photo.photoId}'">수정</button>
+			<button type="button" class="modiBtn" onclick="location.href='deletePhoto.do?photoId=${photo.photoId}'">삭제</button>
 		</c:if>
+	</div>
+	<div class="photoInfo">
 		<span class="creator"> <img src="upload/${creator.profile}" >
 			${creator.nicName } </span>
 		<span class="count"> <img src="image/greyView.png" alt="view">

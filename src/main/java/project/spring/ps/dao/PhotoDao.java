@@ -33,4 +33,8 @@ public interface PhotoDao {
 
 	MemberVO selectCreator(String creatorId);
 
+	int updatePhoto(PhotoVO photo);
+
+	int deletePhoto(int photoId);
+
 }

@@ -47,8 +47,8 @@ public class PhotoVO {
 	public String getPcomment() {
 		return pcomment;
 	}
-	public void setComment(String comment) {
-		this.pcomment = comment;
+	public void setPcomment(String pcomment) {
+		this.pcomment = pcomment;
 	}
 	public String getHashTag() {
 		return hashTag;
