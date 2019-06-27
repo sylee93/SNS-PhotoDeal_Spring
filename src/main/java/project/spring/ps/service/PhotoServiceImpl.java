@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import project.spring.ps.dao.PhotoDao;
 import project.spring.ps.model.AttentionlistVO;
 import project.spring.ps.model.MemberVO;
+import project.spring.ps.model.PhotoAttentionListVO;
 import project.spring.ps.model.PhotoMemberVO;
 import project.spring.ps.model.PhotoVO;
 
@@ -86,6 +87,16 @@ public class PhotoServiceImpl implements PhotoService {
 	public int deletePhoto(int photoId) {
 		System.out.println("[PhotoServiceImpl.java] deletePhoto");
 		return pd.deletePhoto(photoId);
+	}
+	@Override
+	public List<PhotoMemberVO> selectMyPhoto(String id) {
+		System.out.println("[PhotoServiceImpl.java] selectMyPhoto");
+		return pd.selectMyPhoto(id);
+	}
+	@Override
+	public List<PhotoAttentionListVO> selectAttentionList(String id) {
+		System.out.println("[PhotoServiceImpl.java] selectAttentionList");
+		return pd.selectAttentionList(id);
 	}
 
 }

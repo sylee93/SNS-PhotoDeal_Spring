@@ -23,5 +23,13 @@ public interface UserService {
 
 	int updateProfile(MemberVO member);
 
+	int selectFollowCount(String id);
+
+	int selectFollowCount2(String id);
+
+	int selectFollowerCount(String id);
+
+	int selectFollowerCount2(String id);
+
 
 }

@@ -37,5 +37,25 @@
 	<update id="updateProfile" parameterType="MemberVO">
 		update Member set profile = #{profile} where id = #{id}
 	</update>
+	<select id="selectFollowCount" parameterType="int" resultType="int">
+		select count(*) 
+		from follow 
+		where followId1 = #{id} and followerStatus = 0 or followerStatus = 2
+	</select>
+	<select id="selectFollowCount2" parameterType="int" resultType="int">
+		select count(*) 
+		from follow 
+		where followId2 = #{id} and followerStatus = 1 or followerStatus = 2
+	</select>
+	<select id="selectFollowerCount" parameterType="int" resultType="int">
+		select count(*) 
+		from follow 
+		where followId1 = #{id} and followerStatus = 1 or followerStatus = 2
+	</select>
+	<select id="selectFollowerCount2" parameterType="int" resultType="int">
+		select count(*) 
+		from follow 
+		where followId2 = #{id} and followerStatus = 0 or followerStatus = 2
+	</select>
 
 </mapper>

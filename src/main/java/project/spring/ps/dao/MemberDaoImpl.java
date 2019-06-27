@@ -71,4 +71,28 @@ public class MemberDaoImpl implements MemberDao {
 		System.out.println("[PhotoDaoImpl.java] latestBoard");
 		return session.selectList("latestBoard");
 	}
+
+	@Override
+	public int selectFollowCount(String id) {
+		System.out.println("[PhotoDaoImpl.java] selectFollowCount");
+		return session.selectOne("selectFollowCount", id);
+	}
+
+	@Override
+	public int selectFollowCount2(String id) {
+		System.out.println("[PhotoDaoImpl.java] selectFollowCount2");
+		return session.selectOne("selectFollowCount2", id);
+	}
+
+	@Override
+	public int selectFollowerCount(String id) {
+		System.out.println("[PhotoDaoImpl.java] selectFollowerCount");
+		return session.selectOne("selectFollowerCount", id);
+	}
+
+	@Override
+	public int selectFollowerCount2(String id) {
+		System.out.println("[PhotoDaoImpl.java] selectFollowerCount2");
+		return session.selectOne("selectFollowerCount2", id);
+	}
 }

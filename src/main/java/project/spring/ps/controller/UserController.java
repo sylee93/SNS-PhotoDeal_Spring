@@ -262,14 +262,29 @@ public class UserController {
 			}
 		}
 		/*model.addAttribute("myPageStatus",myPageStatus);*/
-		return "myPageView";
+		return "myPagePro";
 	}
 	@RequestMapping(value = "profileModifyView")
 	public String profileModifyView() {
 		return "profileModifyView";
 	}
-/*	@RequestMapping(value = "leaveProc")
-	public String leaveProc() {
-		return "homeView";
-	}*/
+	@RequestMapping("myInfoView")
+	public String myInfoView(HttpServletRequest request, HttpSession session, Model model) {
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		String id = member.getId();
+		int followingResult = us.selectFollowCount(id);
+		int followingResult2 = us.selectFollowCount2(id);
+		System.out.println("[UserController.java] myInfoView : 팔로잉 수1 = " + followingResult);
+		System.out.println("[UserController.java] myInfoView : 팔로잉 수2 = " + followingResult2);
+		int followerResult = us.selectFollowerCount(id);
+		int followerResult2 = us.selectFollowerCount2(id);
+		System.out.println("[UserController.java] myInfoView : 팔로워 수1 = " + followerResult);
+		System.out.println("[UserController.java] myInfoView : 팔로워 수2 = " + followerResult2);
+		int following = followingResult + followingResult2;
+		int follower = followerResult + followerResult2;
+		model.addAttribute("following",following);
+		model.addAttribute("follower",follower);
+		return "myInfoView";
+	}
+
 }

@@ -65,4 +65,28 @@ public class UserServiceImpl implements UserService {
 		System.out.println("[UserServiceImpl.java] updateProfile");
 		return md.updateProfile(member);
 	}
+
+	@Override
+	public int selectFollowCount(String id) {
+		System.out.println("[UserServiceImpl.java] selectFollowCount");
+		return md.selectFollowCount(id);
+	}
+
+	@Override
+	public int selectFollowCount2(String id) {
+		System.out.println("[UserServiceImpl.java] selectFollowCount2");
+		return md.selectFollowCount2(id);
+	}
+
+	@Override
+	public int selectFollowerCount(String id) {
+		System.out.println("[UserServiceImpl.java] selectFollowerCount");
+		return md.selectFollowerCount(id);
+	}
+
+	@Override
+	public int selectFollowerCount2(String id) {
+		System.out.println("[UserServiceImpl.java] selectFollowerCount2");
+		return md.selectFollowerCount2(id);
+	}
 }

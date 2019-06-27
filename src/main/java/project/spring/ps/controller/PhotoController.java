@@ -17,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import project.spring.ps.model.AttentionlistVO;
 import project.spring.ps.model.MemberVO;
+import project.spring.ps.model.PhotoAttentionListVO;
+import project.spring.ps.model.PhotoMemberVO;
 import project.spring.ps.model.PhotoVO;
 import project.spring.ps.model.ReplyVO;
 import project.spring.ps.service.PhotoService;
@@ -168,5 +170,21 @@ public class PhotoController {
 		int deletePhotoResult = ps.deletePhoto(photoId);
 		model.addAttribute("deletePhotoResult",deletePhotoResult);
 		return "deletePhotoPro";
+	}
+	@RequestMapping(value = "myPhotoListView")
+	public String myPhotoListView(HttpServletRequest request, HttpSession session, Model model) {
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		String id = member.getId();
+		List<PhotoMemberVO> myPhotoList = ps.selectMyPhoto(id);
+		model.addAttribute("myPhotoList", myPhotoList);
+		return "myPhotoListView";
+	}
+	@RequestMapping(value = "attentionListView")
+	public String attentionListView(HttpServletRequest request, HttpSession session, Model model) {
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		String id = member.getId();
+		List<PhotoAttentionListVO> myAttentionList = ps.selectAttentionList(id);
+		model.addAttribute("myAttentionList", myAttentionList);
+		return "attentionListView";
 	}
 }

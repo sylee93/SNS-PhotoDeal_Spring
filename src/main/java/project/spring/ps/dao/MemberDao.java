@@ -27,4 +27,12 @@ public interface MemberDao {
 
 	List<PhotoVO> latestBoard();
 
+	int selectFollowCount(String id);
+
+	int selectFollowCount2(String id);
+
+	int selectFollowerCount(String id);
+
+	int selectFollowerCount2(String id);
+
 }

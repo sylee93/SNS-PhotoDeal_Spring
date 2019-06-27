@@ -8,6 +8,8 @@
 		<typeAlias alias="ReplyVO" type="project.spring.ps.model.ReplyVO" />
 		<typeAlias alias="PhotoMemberVO" type="project.spring.ps.model.PhotoMemberVO" />
 		<typeAlias alias="AttentionlistVO" type="project.spring.ps.model.AttentionlistVO" />
+		<typeAlias alias="FollowVO" type="project.spring.ps.model.FollowVO" />
+		<typeAlias alias="PhotoAttentionListVO" type="project.spring.ps.model.PhotoAttentionListVO" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/Member.xml" />

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import project.spring.ps.model.AttentionlistVO;
 import project.spring.ps.model.MemberVO;
+import project.spring.ps.model.PhotoAttentionListVO;
 import project.spring.ps.model.PhotoMemberVO;
 import project.spring.ps.model.PhotoVO;
 
@@ -87,5 +88,15 @@ public class PhotoDaoImpl implements PhotoDao {
 	@Override
 	public int deletePhoto(int photoId) {
 		return session.delete("deletePhoto", photoId);
+	}
+
+	@Override
+	public List<PhotoMemberVO> selectMyPhoto(String id) {
+		return session.selectList("selectMyPhoto", id);
+	}
+
+	@Override
+	public List<PhotoAttentionListVO> selectAttentionList(String id) {
+		return session.selectList("selectAttentionList", id);
 	}
 }

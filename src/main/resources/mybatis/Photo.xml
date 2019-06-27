@@ -17,6 +17,22 @@
 		<result column="nicName" property="nicName" />
 		<result column="profile" property="profile" />
 	</resultMap>
+	
+	<resultMap type="PhotoAttentionListVO" id="PhotoAttentionListVO">
+		<result column="photoId" property="photoId" />
+		<result column="photoCreator" property="photoCreator" />
+		<result column="photoPath" property="photoPath" />
+		<result column="priceStatus" property="priceStatus" />
+		<result column="price" property="price" />
+		<result column="pcomment" property="pcomment" />
+		<result column="hashTag" property="hashTag" />
+		<result column="downloadCount" property="downloadCount" />
+		<result column="likeCount" property="likeCount" />
+		<result column="regiDate" property="regiDate" />
+		<result column="viewCount" property="viewCount" />
+		<result column="replyCount" property="replyCount" />
+		<result column="attentionId" property="attentionId" />
+	</resultMap>
 
 	<select id="latestBoard" resultMap="PhotoMemberVO">
 		SELECT *
@@ -64,4 +80,20 @@
 	<delete id="deletePhoto" parameterType="int">
 		delete from photo where photoId = #{photoId}
 	</delete>
+	<select id="selectMyPhoto" parameterType="java.lang.String" resultMap="PhotoMemberVO">
+		SELECT *
+		FROM Photo p
+		LEFT JOIN Member m
+		ON p.photoCreator = m.id
+		WHERE m.id = #{id}
+		ORDER BY regidate desc, photoId desc		
+	</select>
+	<select id="selectAttentionList" parameterType="java.lang.String" resultMap="PhotoAttentionListVO">
+		SELECT *
+		FROM Photo p
+		LEFT JOIN Attentionlist a
+		ON p.photoId = a.likePhotoId
+		WHERE a.attentionid = #{id}
+		ORDER BY regidate desc, photoId desc	
+	</select>
 </mapper>

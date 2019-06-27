@@ -6,14 +6,6 @@
 </head>
 <body>
 	<nav>
-		<div class="menu">
-			<button class="menubtn">
-				<img src="image/menu.png">
-			</button>
-			<div class="menu-content">
-				<a href="#">유료 이미지</a> <a href="#">무료 이미지</a> <a href="categoryView.do">카테고리</a>
-			</div>
-		</div>
 		<c:if test="${sessionScope.member.id == null }">
 			<div class="profile">
 				<button class="menubtn right" onclick="openLogin()">
@@ -31,10 +23,10 @@
 				<div class="profile-content">
 					<a href="#">
 						보유포인트<br>
-						50,000원
+						${sessionScope.member.point }
 					</a>
 					<hr class="myinfoHr">
-					<a href="myPageView.do">
+					<a href="myInfoView.do">
 						상세보기
 					</a>
 					<a href="homeView.do?logOutFlag=1">로그아웃</a>

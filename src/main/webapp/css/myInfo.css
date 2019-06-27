@@ -1,0 +1,17 @@
+@charset "UTF-8";
+.mainTable {
+	margin: 0 auto;
+}
+.profileImg {
+	width: 40%
+}
+.profileImg img {
+	width: 200px;
+	height: 200px;
+	border-radius: 100%;
+	margin-right: 20px;
+}
+.myName {
+	font-size: 3rem;
+	font-weight: bold;
+}

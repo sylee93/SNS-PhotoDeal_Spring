@@ -4,6 +4,7 @@ import java.util.List;
 
 import project.spring.ps.model.AttentionlistVO;
 import project.spring.ps.model.MemberVO;
+import project.spring.ps.model.PhotoAttentionListVO;
 import project.spring.ps.model.PhotoMemberVO;
 import project.spring.ps.model.PhotoVO;
 
@@ -36,5 +37,9 @@ public interface PhotoDao {
 	int updatePhoto(PhotoVO photo);
 
 	int deletePhoto(int photoId);
+
+	List<PhotoMemberVO> selectMyPhoto(String id);
+
+	List<PhotoAttentionListVO> selectAttentionList(String id);
 
 }
