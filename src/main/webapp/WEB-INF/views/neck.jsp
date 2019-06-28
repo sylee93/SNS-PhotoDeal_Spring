@@ -39,11 +39,12 @@
 		</div>
 		<div class="searchNav">
 			<select class="neckSerchFilter">
-				<option value="filterTag">태그검색</option>
+				<option value="filterTag" selected="selected">태그검색</option>
 				<option value="filterUser">유저검색</option>
-			</select> <input class="search bar" type="text" placeholder="Search...">
+			</select> 
+			<input id="search" class="search bar" type="text" placeholder="Search...">
 			<button class="search btn">
-				<img class="dodbogi" src="image/dodbogi.png">
+				<img class="dodbogi" src="image/dodbogi.png" onclick="search()">
 			</button>
 		</div>
 	</nav>
@@ -55,11 +56,18 @@
 					<img src="image/title2.png">
 				</div>
 				<label>ID</label><br> 
-				<input type="text" name="id"><br><br>
+				<input class="loginInput" type="text" name="id"><br><br>
 				<label>Password</label><br> 
-				<input type="text" name="pw"><br> <br> 
+				<input class="loginInput" type="password" name="pw"><br> <br> 
 				<input type="submit" value="로그인"> 
 				<a class="signup" href="signUpView.do">회원가입</a>
 			</form>
 		</div>
 	</div>
+<script type="text/javascript">
+function search(){
+	var filter = $(".neckSerchFilter").val();
+	var search = $("#search").val();
+	location.href="homeView.do?filter="+filter+"&search="+search;
+}
+</script>

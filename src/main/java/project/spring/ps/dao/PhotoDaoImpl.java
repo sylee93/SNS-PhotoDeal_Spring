@@ -99,4 +99,34 @@ public class PhotoDaoImpl implements PhotoDao {
 	public List<PhotoAttentionListVO> selectAttentionList(String id) {
 		return session.selectList("selectAttentionList", id);
 	}
+
+	@Override
+	public List<PhotoMemberVO> hashSearch(String search) {
+		return session.selectList("hashSearch", search);
+	}
+
+	@Override
+	public List<PhotoMemberVO> userSearch(String search) {
+		return session.selectList("userSearch", search);
+	}
+
+	@Override
+	public List<PhotoMemberVO> hashSearchLike(String search) {
+		return session.selectList("hashSearchLike", search);
+	}
+
+	@Override
+	public List<PhotoMemberVO> userSearchLike(String search) {
+		return session.selectList("userSearchLike", search);
+	}
+
+	@Override
+	public List<PhotoMemberVO> hashSearchDown(String search) {
+		return session.selectList("hashSearchDown", search);
+	}
+
+	@Override
+	public List<PhotoMemberVO> userSearchDown(String search) {
+		return session.selectList("userSearchDown", search);
+	}
 }

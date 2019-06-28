@@ -32,32 +32,75 @@ public class UserController {
 	public String homeView(HttpServletRequest request, HttpSession session, Model model) {
 		// 홈화면에 뿌려줄 사진 리스트	
 		String sortType = request.getParameter("sortType");
+		String filter = request.getParameter("filter");
+		String search = request.getParameter("search");
+		System.out.println("[UserController.java] homeView : filter = " + filter);
+		System.out.println("[UserController.java] homeView : search = " + search);
+		int btnStatus = 0;		
 		int checkSort = 0;
-		int btnStatus = 0;
 		
 		if(sortType != null) {
 			checkSort = Integer.parseInt(request.getParameter("sortType"));
 			System.out.println("[UserController.java] homeView : sortType = " + sortType);
 		}
 		if (checkSort == 0) {
-			System.out.println("[UserController.java] homeView : 최신순");
-			List<PhotoMemberVO> latestPhotoList = ps.latestBoard();
-			
-			btnStatus = 0;
-			model.addAttribute("photoList",latestPhotoList);
-			model.addAttribute("btnStatus",btnStatus);
-		}else if(checkSort == 1) {
-			System.out.println("[UserController.java] homeView : 인기순");
-			List<PhotoMemberVO> likePhotoList = ps.likeBoard();
-			btnStatus = 1;
-			model.addAttribute("photoList",likePhotoList);
-			model.addAttribute("btnStatus",btnStatus);
-		}else {
-			System.out.println("[UserController.java] homeView : 다운순");
-			List<PhotoMemberVO> downloadPhotoList = ps.downloadBoard();
-			btnStatus = 2;
-			model.addAttribute("photoList",downloadPhotoList);
-			model.addAttribute("btnStatus",btnStatus);
+			if (filter != null && filter.equals("filterTag")) {
+				List<PhotoMemberVO> hashSearch = ps.hashSearch(search);
+				btnStatus = 0;
+				model.addAttribute("photoList",hashSearch);
+				model.addAttribute("btnStatus",btnStatus);
+				
+			} else if (filter != null && filter.equals("filterUser")) {
+				List<PhotoMemberVO> userSearch = ps.userSearch(search);
+				btnStatus = 0;
+				model.addAttribute("photoList",userSearch);
+				model.addAttribute("btnStatus",btnStatus);
+			} else {
+				System.out.println("[UserController.java] homeView : 최신순");
+				List<PhotoMemberVO> latestPhotoList = ps.latestBoard();
+				
+				btnStatus = 0;
+				model.addAttribute("photoList",latestPhotoList);
+				model.addAttribute("btnStatus",btnStatus);
+			}
+		} else if(checkSort == 1) {
+			if (filter != null && filter.equals("filterTag")) {
+				List<PhotoMemberVO> hashSearch = ps.hashSearchLike(search);
+				btnStatus = 1;
+				model.addAttribute("photoList",hashSearch);
+				model.addAttribute("btnStatus",btnStatus);
+				
+			} else if (filter != null && filter.equals("filterUser")) {
+				List<PhotoMemberVO> userSearch = ps.userSearchLike(search);
+				btnStatus = 1;
+				model.addAttribute("photoList",userSearch);
+				model.addAttribute("btnStatus",btnStatus);
+			} else {
+				System.out.println("[UserController.java] homeView : 인기순");
+				List<PhotoMemberVO> likePhotoList = ps.likeBoard();
+				btnStatus = 1;
+				model.addAttribute("photoList",likePhotoList);
+				model.addAttribute("btnStatus",btnStatus);
+			}
+		} else {
+			if (filter != null && filter.equals("filterTag")) {
+				List<PhotoMemberVO> hashSearch = ps.hashSearchDown(search);
+				btnStatus = 2;
+				model.addAttribute("photoList",hashSearch);
+				model.addAttribute("btnStatus",btnStatus);
+				
+			} else if (filter != null && filter.equals("filterUser")) {
+				List<PhotoMemberVO> userSearch = ps.userSearchDown(search);
+				btnStatus = 2;
+				model.addAttribute("photoList",userSearch);
+				model.addAttribute("btnStatus",btnStatus);
+			} else {
+				System.out.println("[UserController.java] homeView : 다운순");
+				List<PhotoMemberVO> downloadPhotoList = ps.downloadBoard();
+				btnStatus = 2;
+				model.addAttribute("photoList",downloadPhotoList);
+				model.addAttribute("btnStatus",btnStatus);
+			}
 		}
 		System.out.println("[UserController.java] homeView : btnStatus " + btnStatus);
 		

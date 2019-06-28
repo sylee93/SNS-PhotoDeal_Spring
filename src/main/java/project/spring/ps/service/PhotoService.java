@@ -42,4 +42,16 @@ public interface PhotoService {
 
 	List<PhotoAttentionListVO> selectAttentionList(String id);
 
+	List<PhotoMemberVO> hashSearch(String search);
+
+	List<PhotoMemberVO> userSearch(String search);
+
+	List<PhotoMemberVO> userSearchLike(String search);
+
+	List<PhotoMemberVO> hashSearchLike(String search);
+
+	List<PhotoMemberVO> hashSearchDown(String search);
+
+	List<PhotoMemberVO> userSearchDown(String search);
+
 }

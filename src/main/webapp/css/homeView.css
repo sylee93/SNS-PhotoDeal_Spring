@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 .column {
+	display : inline-block;
 	margin: 30px;
 	column-width: 250px;
 	column-gap: 15px;

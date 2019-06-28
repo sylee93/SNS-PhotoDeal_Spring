@@ -96,4 +96,52 @@
 		WHERE a.attentionid = #{id}
 		ORDER BY regidate desc, photoId desc	
 	</select>
+	<select id="hashSearch" parameterType="java.lang.String" resultMap="PhotoMemberVO">
+		SELECT *
+		FROM Photo p
+		LEFT JOIN Member m
+		ON p.photoCreator = m.id
+		WHERE p.hashTag LIKE '%'|| #{search} || '%'
+		ORDER BY regidate desc, photoId desc
+	</select>
+	<select id="userSearch" parameterType="java.lang.String" resultMap="PhotoMemberVO">
+		SELECT *
+		FROM Photo p
+		LEFT JOIN Member m
+		ON p.photoCreator = m.id
+		WHERE p.photoCreator LIKE '%'|| #{search} || '%'
+		ORDER BY regidate desc, photoId desc
+	</select>
+	<select id="hashSearchLike" parameterType="java.lang.String" resultMap="PhotoMemberVO">
+		SELECT *
+		FROM Photo p
+		LEFT JOIN Member m
+		ON p.photoCreator = m.id
+		WHERE p.hashTag LIKE '%'|| #{search} || '%'
+		ORDER BY likeCount desc, photoId desc 
+	</select>
+	<select id="userSearchLike" parameterType="java.lang.String" resultMap="PhotoMemberVO">
+		SELECT *
+		FROM Photo p
+		LEFT JOIN Member m
+		ON p.photoCreator = m.id
+		WHERE p.photoCreator LIKE '%'|| #{search} || '%'
+		ORDER BY likeCount desc, photoId desc 
+	</select>
+		<select id="hashSearchDown" parameterType="java.lang.String" resultMap="PhotoMemberVO">
+		SELECT *
+		FROM Photo p
+		LEFT JOIN Member m
+		ON p.photoCreator = m.id
+		WHERE p.hashTag LIKE '%'|| #{search} || '%'
+		ORDER BY likeCount desc, photoId desc 
+	</select>
+	<select id="userSearchDown" parameterType="java.lang.String" resultMap="PhotoMemberVO">
+		SELECT *
+		FROM Photo p
+		LEFT JOIN Member m
+		ON p.photoCreator = m.id
+		WHERE p.photoCreator LIKE '%'|| #{search} || '%'
+		ORDER BY likeCount desc, photoId desc 
+	</select>
 </mapper>

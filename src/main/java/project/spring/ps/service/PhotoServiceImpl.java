@@ -98,5 +98,35 @@ public class PhotoServiceImpl implements PhotoService {
 		System.out.println("[PhotoServiceImpl.java] selectAttentionList");
 		return pd.selectAttentionList(id);
 	}
+	@Override
+	public List<PhotoMemberVO> hashSearch(String search) {
+		System.out.println("[PhotoServiceImpl.java] hashSearch");
+		return pd.hashSearch(search);
+	}
+	@Override
+	public List<PhotoMemberVO> userSearch(String search) {
+		System.out.println("[PhotoServiceImpl.java] userSearch");
+		return pd.userSearch(search);
+	}
+	@Override
+	public List<PhotoMemberVO> hashSearchLike(String search) {
+		System.out.println("[PhotoServiceImpl.java] hashSearchLike");
+		return pd.hashSearchLike(search);
+	}
+	@Override
+	public List<PhotoMemberVO> userSearchLike(String search) {
+		System.out.println("[PhotoServiceImpl.java] userSearchLike");
+		return pd.userSearchLike(search);
+	}
+	@Override
+	public List<PhotoMemberVO> hashSearchDown(String search) {
+		System.out.println("[PhotoServiceImpl.java] hashSearchDown");
+		return pd.hashSearchDown(search);
+	}
+	@Override
+	public List<PhotoMemberVO> userSearchDown(String search) {
+		System.out.println("[PhotoServiceImpl.java] userSearchDown");
+		return pd.userSearchDown(search);
+	}
 
 }
