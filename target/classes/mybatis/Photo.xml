@@ -144,4 +144,13 @@
 		WHERE p.photoCreator LIKE '%'|| #{search} || '%'
 		ORDER BY likeCount desc, photoId desc 
 	</select>
+	<select id="selectPrice" parameterType="java.lang.String" resultType="int">
+		select point from member where id = #{id}
+	</select>
+	<update id="updatePoint" parameterType="java.lang.String">
+		update member set point = point - #{point} where id = #{id}
+	</update>
+	<update id="updateDownCount" parameterType="int">
+		update photo set downloadCount = downloadCount + 1 where photoId = #{photoId}
+	</update>
 </mapper>

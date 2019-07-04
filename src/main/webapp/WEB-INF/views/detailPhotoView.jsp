@@ -11,6 +11,9 @@
 %>
 <div class="main">
 <input type="hidden" id="photoIdParam" value="${photo.photoId }">
+<input type="hidden" id="sessionIdParam" value="${sessionScope.member.id}">
+<input type="hidden" id="downPrice" value="${photo.price}">
+<input type="hidden" id="downPhotoPath" value="${photo.photoPath}">
 	<div class="modiBtnBox">
 		<c:if test="${sessionScope.member.id eq creator.id}">
 			<button type="button" class="modiBtn" onclick="location.href='modifyPhotoView.do?photoId=${photo.photoId}'">수정</button>
@@ -50,7 +53,8 @@
 			</c:if>
 		</c:if>
 		<div class="downBtnBox">
-			<button class="downBtn" type="button" onmouseover="viewPrice(${photo.price})">다운로드</button>
+			<button class="downBtn" type="button" onmouseover="viewPrice($('#downPrice').val())" onclick="downCheck($('#downPrice').val())">다운로드</button>
+			<a class="hide" href="upload/${photo.photoPath }" download>down</a>
 		</div>
 	</div>
 </div>
@@ -168,6 +172,43 @@ function clickHeart(){
 			}
 		})
 	}
+}
+function downCheck(price){
+	var photoIdParam = $("#photoIdParam").val();
+	var downPhotoPath = $("#downPhotoPath").val();
+	var id = $("#sessionIdParam").val();
+	console.log(id);
+	if(price != "0"){
+		if (id != ""){
+			if(confirm("다운로드 시 포인트가 차감됩니다. 다운로드 하시겠습니까?") == true){
+				$.ajax({
+					url:"<%=context%>/photo/donwloadCheck.do",
+					type:"POST",
+					data : {price : price, photoId : photoIdParam},
+					dataType:'text',
+					success: function(data){
+						if (data == "성공"){
+							$(".hide").get(0).click();
+						} else {
+							alert(data);
+							console.log(data);
+							return false;
+						}
+					},
+					error:function(request,status,error){
+				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				    }
+				})
+			} else {
+				return false;
+			}
+		} else {
+			alert("유료 이미지입니다. 다운 받길 원하시면 로그인을 해주세요");
+		}	
+	} else {
+		$(".hide").get(0).click();
+	}
+	
 }
 </script>
 <%@ include file="footer.jsp"%>

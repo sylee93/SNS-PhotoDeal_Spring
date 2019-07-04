@@ -46,4 +46,31 @@ public class PhotoRestController {
 		}
 		return heart;
 	}
+	@RequestMapping(value = "donwloadCheck", produces = "application/text;charset=UTF-8")
+	public String donwloadCheck(HttpServletRequest request, HttpSession session) {
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		String id = member.getId();
+		System.out.println(" id ==== " + id);
+		String result = null;
+		
+		int price = Integer.parseInt(request.getParameter("price"));
+		int point = ps.selectPrice(id);
+		if (price > point) {
+			result = "보유 포인트가 부족합니다.";
+		} else {
+			MemberVO updateMember = new MemberVO();
+			int photoId = Integer.parseInt(request.getParameter("photoId"));
+			updateMember.setId(id);
+			updateMember.setPoint(price);
+			int resultDownCount = ps.updateDownCount(photoId);
+			int resultPoint = ps.updatePoint(updateMember);
+			int reultUpdate = resultDownCount * resultPoint; 
+			if (reultUpdate > 0) {
+				result = "성공";
+			} else {
+				result = "실패";
+			}
+		}
+		return result;
+	}
 }

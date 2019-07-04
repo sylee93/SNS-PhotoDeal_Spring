@@ -128,5 +128,20 @@ public class PhotoServiceImpl implements PhotoService {
 		System.out.println("[PhotoServiceImpl.java] userSearchDown");
 		return pd.userSearchDown(search);
 	}
+	@Override
+	public int selectPrice(String id) {
+		System.out.println("[PhotoServiceImpl.java] selectPrice");
+		return pd.selectPrice(id);
+	}
+	@Override
+	public int updatePoint(MemberVO updateMember) {
+		System.out.println("[PhotoServiceImpl.java] updatePoint");
+		return pd.updatePoint(updateMember);
+	}
+	@Override
+	public int updateDownCount(int photoId) {
+		System.out.println("[PhotoServiceImpl.java] updateDownCount");
+		return pd.updateDownCount(photoId);
+	}
 
 }

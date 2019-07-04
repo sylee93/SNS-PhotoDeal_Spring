@@ -129,4 +129,19 @@ public class PhotoDaoImpl implements PhotoDao {
 	public List<PhotoMemberVO> userSearchDown(String search) {
 		return session.selectList("userSearchDown", search);
 	}
+
+	@Override
+	public int selectPrice(String id) {
+		return session.selectOne("selectPrice", id);
+	}
+
+	@Override
+	public int updatePoint(MemberVO updateMember) {
+		return session.update("updatePoint", updateMember);
+	}
+
+	@Override
+	public int updateDownCount(int photoId) {
+		return session.update("updateDownCount", photoId);
+	}
 }

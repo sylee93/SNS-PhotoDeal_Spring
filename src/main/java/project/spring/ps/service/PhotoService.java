@@ -54,4 +54,10 @@ public interface PhotoService {
 
 	List<PhotoMemberVO> userSearchDown(String search);
 
+	int selectPrice(String id);
+
+	int updatePoint(MemberVO updateMember);
+
+	int updateDownCount(int photoId);
+
 }
